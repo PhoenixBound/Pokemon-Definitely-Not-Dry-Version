@@ -5,3 +5,4 @@ A ROMhack of Pokemon FireRed.
 * New scripting and text
 * Trainers replaced with people in chat
 * New graphics
+* New music/sounds
