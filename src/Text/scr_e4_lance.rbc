@@ -1,0 +1,119 @@
+#dynamic 0x800000
+'--------------- This script was originally decompiled from 0x162a14. Its current form is untested.
+#org @start
+lock
+faceplayer
+setvar 0x8004 0xC
+setvar 0x8005 0x2
+special 0x174                   'fame checker stuff
+checkflag 0x4BB                 'has Lance been beaten this E4 run?
+if 0x1 goto @lanceAlreadyBeaten 'if yes, jump to "afterwards" text
+setvar 0x8004 0xC
+setvar 0x8005 0x0
+special 0x173          'fame checker stuff
+setvar 0x8004 0xC
+setvar 0x8005 0x1
+special 0x173          'fame checker stuff
+checkflag 0x82C        'has E4 been beaten before?
+if 0x0 call 0x8162A79  'if no, jump to "before first fight" text and return
+checkflag 0x82C        'has E4 been beaten before?
+if 0x1 call 0x8162A82  'if yes, jump to "before second fight" text and return
+setflag 0x3
+setflag 0x5
+checkflag 0x844        'can player trade with RSE?
+if 0x0 call 0x8162A8B  'if no, go to this part of the script that's only one command long. This organization thing is a little superfluous...
+checkflag 0x844        'can player trade with RSE?
+if 0x1 call 0x8162A96  'if yes, begin the harder fight and return
+clearflag 0x5
+goto @rightAfterBattle 'jump to post-battle "afterwards" text that opens door
+
+'--------------- The original will exist alongside this one.
+#org @afterwards
+msgbox @msg_afterwards MSG_KEEPOPEN '"I still can't believe my dragons\n..."
+release
+end
+
+'--------------- POINTER DIFFERENT
+#org 0x162A79
+msgbox @msg_beforeFight1 MSG_KEEPOPEN '"Ah! I've heard about you,\n[player..."
+return
+
+'--------------- SAME AS ORIGINAL, COMMENTED OUT
+'#org 0x162A82
+'msgbox 0x81788BD MSG_KEEPOPEN '"Ah!\nSo, you've returned, [player]..."
+'return
+
+'--------------- POINTER DIFFERENT
+#org 0x162A8B
+trainerbattle 0x3 0x19D 0x0 @msg_onLoseFight
+return
+
+'--------------- SAME AS ORIGINAL, COMMENTED OUT
+'#org 0x162A96
+'trainerbattle 0x3 0x2E2 0x0 0x8178A15
+'return
+
+'---------------
+#org @rightAfterBattle
+setvar 0x8004 0x0
+special 0xAA              'For the record, I have no idea what 0xAA means or if it does anything.
+setflag 0x4BB
+call 0x81A7563
+checkflag 0x844
+if 0x0 call @afterBattle1
+checkflag 0x844
+if 0x1 call @afterBattle2
+closeonkeypress
+release
+end
+
+'--------------- SAME AS ORIGINAL, COMMENTED OUT
+'#org 0x1A7563
+'applymovement MOVE_PLAYER 0x81A75FE
+'waitmovement 0x0
+'sound 0x8
+'setmaptile 0x6 0x4 0x28E 0x1
+'setmaptile 0x6 0x5 0x296 0x0
+'special 0x8E
+'setflag 0x4
+'return
+
+'----------------
+#org @lanceAlreadyBeaten
+checkflag 0x844
+if 0x0 goto @afterwards
+checkflag 0x844
+if 0x1 goto 0x8162AA1
+
+#org @afterBattle1
+msgbox @msg_afterwards MSG_KEEPOPEN
+return
+
+#org @afterBattle2
+msgbox 0x8178A52 MSG_KEEPOPEN '"I still can't believe my dragons\n..."
+return
+
+'---------
+' Strings
+'---------
+#org @msg_afterwards
+= Dude, you just straight up pooped\non me.\pWell, anyways... I could just lock\nyou in here, but I'll be nice.\pGo and face that bozo that came in\nhere a few minutes ago.\pHe's all the way from the JOHTO\nregion, so good luck!
+
+#org @msg_beforeFight1
+= Yo, what's up [player].\nLooks like you made it.\pWell, based on the time it took\nyou to get here...\p...as the region's highest officer\non speedrun ratings, I officially\lrate this speedrun 2/10.\pIf I beat you on your first try,\nyou must play POKÈMON COLOSSEUM.\lNo negotiation over that.\pAre you ready? It's going to get\n[red_fr]lit[blue_fr], fam!!\c\h0B[Ke]¿
+
+'#org 0x1788BD  'COMMENTED OUT, SAME AS ORIGINAL
+'= Ah!\nSo, you've returned, [player]!\pI lead the ELITE FOUR.\pYou can call me LANCE the dragon\nTRAINER.\pYou know that dragons are\nmythical POKÈMON.\pThey're hard to catch and raise,\nbut their powers are superior.\pThey're virtually indestructible.\nThere's no being clever with them.\pWell, are you ready to lose?\pYour LEAGUE challenge ends with\nme, [player]!\c\h0B[Ke]¿
+'I'm pretty sure that weird gibberish at the end triggers the encounter music. Might be wrong, though, since I've done zero testing.
+
+#org @msg_onLoseFight
+= Wow.\nI just got straight-up dabbed on.
+
+
+'-----------
+' Movements (commented out; same as original)
+'-----------
+'#org 0x1A75FE
+'#raw 0x1C 'Delay5
+'#raw 0x1C 'Delay5
+'#raw 0xFE 'End of Movements
