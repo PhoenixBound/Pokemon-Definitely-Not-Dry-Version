@@ -1,0 +1,18 @@
+'--------------- Originally decompiled from 0x160F64
+#org @start
+trainerbattle 0x0 0x196 0x0 @before @after
+msgbox @default MSG_NORMAL '"I never wanted to lose to anybody,..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @before
+= You have a ways to go!
+
+#org @after
+= The question is, which way is the\nright way?
+
+#org @default
+= I guess we both have a bit of\nwalking to do if either of us is\lgoing to find the POKÈMON LEAGUE.

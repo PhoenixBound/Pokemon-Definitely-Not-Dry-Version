@@ -1,0 +1,122 @@
+#dynamic 0x800000
+'---------------
+#org 0x1625DC
+lock
+faceplayer
+setvar 0x8004 0x9
+setvar 0x8005 0x2
+special 0x174
+checkflag 0x4B8
+if 0x1 goto @onTalkAgain
+setvar 0x8004 0x9
+setvar 0x8005 0x0
+special 0x173
+setvar 0x8004 0x9
+setvar 0x8005 0x1
+special 0x173
+checkflag 0x844
+if 0x0 call 0x8162641
+checkflag 0x844
+if 0x1 call 0x816264A
+setflag 0x3
+setflag 0x5
+checkflag 0x844
+if 0x0 call 0x8162653
+checkflag 0x844
+if 0x1 call 0x816265E
+clearflag 0x5
+goto 0x8162673
+
+'---------------
+#org @onTalkAgain   'TODO: branch here
+checkflag 0x844
+if 0x1 call @afterFight1
+checkflag 0x844
+if 0x1 call @afterFight2
+release
+end
+
+'---------------
+#org @afterFight1
+msgbox @msg_afterFight1 MSG_KEEPOPEN
+return
+
+'---------------
+#org @afterFight2
+msgbox 0x81781B0 MSG_KEEPOPEN '"You're better than I thought.\nGo ..."
+return
+
+'---------------
+#org 0x162641
+msgbox @msg_beforeFight1 MSG_KEEPOPEN '"Hey dad!\c\h0B[Ke]¿"
+return
+
+'---------------
+#org 0x16264A
+msgbox 0x8178089 MSG_KEEPOPEN '"Welcome to the POKÈMON LEAGUE.\pI,..."
+return
+
+'---------------
+#org 0x162653
+trainerbattle 0x3 0x19A 0x0 @msg_onLoseFight
+return
+
+'---------------
+'---- #org 0x16265E
+'---- trainerbattle 0x3 0x2DF 0x0 0x8178191
+'---- return
+
+'---------------
+#org 0x162673
+setflag 0x4B8
+call 0x81A7506
+msgbox 0x81781B0 MSG_KEEPOPEN '"You're better than I thought.\nGo ..."
+release
+end
+
+'---------------
+#org 0x1A7506
+applymovement MOVE_PLAYER 0x81A75FE
+waitmovement 0x0
+sound 0x8
+call 0x81A7538
+special 0x8E
+setflag 0x4
+return
+
+'---------------
+'---- #org 0x1A7538
+'---- setmaptile 0x6 0x1 0x28E 0x1
+'---- setmaptile 0x6 0x2 0x296 0x0
+'---- return
+
+
+'---------
+' Strings
+'---------
+'---- #org 0x1781B0
+'---- = You're better than I thought.\nGo on ahead.\pYou only got a taste of the\nPOKÈMON LEAGUE's power.
+
+#org @msg_afterFight1
+= [.]Dang it, J!\pWhy didn't he remember to fix this\nline?!
+
+#org @msg_beforeFight1
+= Hey, dad!\c\h0B\h56\h01
+
+'---- #org 0x178089
+'---- = Welcome to the POKÈMON LEAGUE.\pI, LORELEI of the ELITE FOUR,\nhave returned!\pYou know how it goes.\nNo one can best me when it comes\lto icy POKÈMON.\pFreezing moves are powerful.\pYour POKÈMON will be at my mercy\nwhen they are frozen solid.\pHahaha!\nAre you ready?\c\h0B[Ke]¿
+
+#org @msg_onLoseFight
+= [.]Huh?\nYou don't look like GUPPY[.]
+
+#org 0x178191
+= [.]Things shouldn't be this way!
+
+
+'-----------
+' Movements
+'-----------
+'---- #org 0x1A75FE
+'---- #raw 0x1C 'Delay5
+'---- #raw 0x1C 'Delay5
+'---- #raw 0xFE 'End of Movements

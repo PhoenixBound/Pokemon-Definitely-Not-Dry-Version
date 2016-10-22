@@ -1,0 +1,19 @@
+#dynamic 0x800000
+'---------------
+#org @start
+trainerbattle 0x0 0x194 0x0 @before @after
+msgbox @default MSG_NORMAL '"By fighting tough battles, you get..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @before
+= Pssh! You won't be getting past\nme!
+
+#org @after
+= Wha-? Wow[.]I guess you made it\npast me. Congrats.
+
+#org @default
+= Fighting tough battles[.]so easy-\nsounding on paper, right?

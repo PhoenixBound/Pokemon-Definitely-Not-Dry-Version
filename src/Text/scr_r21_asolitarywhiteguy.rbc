@@ -1,0 +1,31 @@
+#dynamic 0x800000
+'---------------
+#org @start
+trainerbattle 0x0 0xE7 0x0 @before1 @after
+special2 LASTRESULT 0x39
+compare LASTRESULT 0x1
+if 0x1 goto @vseek_lines
+msgbox @default MSG_NORMAL '"I seem to only catch MAGIKARP!"
+end
+
+'---------------
+#org @vseek_lines
+trainerbattle 0x5 0xE7 0x0 @before2 @after
+msgbox @default MSG_NORMAL '"I seem to only catch MAGIKARP!"
+end
+
+
+'---------
+' Strings
+'---------
+#org @before1
+= Go, my AIPOMS! Win!
+
+#org @after
+= How could my AIPOMS lose?
+
+#org @default
+= I seem to never catch MAGIKARP out\nhere.\lI wonder why[.]
+
+#org @before2
+= My AIPOMS will win this time!

@@ -1,0 +1,19 @@
+#dynamic 0x800000
+'---------------
+#org @start
+trainerbattle 0x0 0x68 0x0 @before @lose
+msgbox @default MSG_NORMAL '"Sometimes, you can find stuff on\n..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @before
+= [player], you need some milk[.]
+
+#org @lose
+= [player], I need some milk[.]
+
+#org @default
+= Now, where did they sell milk\nagain[.]?\pThat's right, it was TWO ISLAND.

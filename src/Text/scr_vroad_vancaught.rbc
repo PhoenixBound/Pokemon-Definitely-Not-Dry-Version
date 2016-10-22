@@ -1,0 +1,19 @@
+#dynamic 0x800000
+'---------------
+#org @start
+trainerbattle 0x0 0x18A 0x0 @before @after
+msgbox @default MSG_NORMAL '"All TRAINERS here are headed to\nt..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @before
+= I'll rek u, m8! Prepare for A DEAD\nBATTLE!!!  'I'm on the fence about the "dead battle" part...
+
+#org @after
+= Come on, you're killing me here!
+
+#org @default
+= You rekt me m8, but you were too\nslow. 2/10 horrible speedrun

@@ -1,0 +1,19 @@
+#dynamic 0x800000
+'---------------
+#org @start
+trainerbattle 0x0 0x118 0x0 @before @after
+msgbox @default MSG_NORMAL '"PSYCHIC POKÈMON fear only ghosts\n..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @before
+= Heyo! Get your POKÈMON ready,\n'cuz it's time to battle!
+
+#org @after
+= My POKÈMON weren't ready for this!
+
+#org @default
+= Normally, PSYCHICS are afraid of\nghosts and bugs[.]\pBut not a lot of people came here\nwith ghosts. It's weird.

@@ -1,0 +1,19 @@
+#dynamic 0x800000
+'---------------
+#org @start
+trainerbattle 0x0 0x8B 0x0 @before @after
+msgbox @default MSG_NORMAL '"Sea POKÈMON live in deep water.\nY..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @before
+= I'll show you mine if you show me\nyours!
+
+#org @after
+= Nice, nice[.]
+
+#org @default
+= You'll probably need a ROD to fish\nfor sea POKÈMON. Ha ha!

@@ -1,0 +1,30 @@
+'---------------
+#org @start
+trainerbattle 0x0 0x1D1 0x0 @before1 @after
+special2 LASTRESULT 0x39
+compare LASTRESULT 0x1
+if 0x1 goto @vseek_lines
+msgbox @default MSG_NORMAL '"You sure had guts standing up to\n..."
+end
+
+'---------------
+#org @vseek_lines
+trainerbattle 0x5 0x1D1 0x0 @before2 @after
+msgbox @default MSG_NORMAL '"You sure had guts standing up to\n..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @before1
+= Hahahaha! I see the trash\nchallenges me!
+
+#org @after
+= Haha[.]I see the trash was quite a\nchallenge[.]
+
+#org @default
+= You sure had guts standing up to\nme there, eh?
+
+#org @before2
+= Hahahaha! I see the trash\nchallenges me again!

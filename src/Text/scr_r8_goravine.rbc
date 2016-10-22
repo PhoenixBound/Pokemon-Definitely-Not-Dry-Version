@@ -1,0 +1,31 @@
+#dynamic 0x800000
+'---------------
+#org @start
+trainerbattle 0x0 0x82 0x0 @before1 @after
+special2 LASTRESULT 0x39
+compare LASTRESULT 0x1
+if 0x1 goto @vseeker_lines
+msgbox @default MSG_NORMAL '"SAFFRON's gatekeeper won't let us\..."
+end
+
+'---------------
+#org @vseeker_lines
+trainerbattle 0x5 0x82 0x0 @before2 @after
+msgbox @default MSG_NORMAL '"SAFFRON's gatekeeper won't let us\..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @before1
+= I am sick of these POKÈMON licking\nme[.]\pYou! Do me right now!
+
+#org @after
+= Hey, since when do YOU get to come\nin like a wrecking ball?!
+
+#org @default
+= Well, at least these POKÈMON can't\nlick me when they're unconscious.\pBy the way, I'm GORAVINE.
+
+#org @before2
+= These POKÈMON! Always licking me[.]\pYou! You know the drill. Let's get\nto it.

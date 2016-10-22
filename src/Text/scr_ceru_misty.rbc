@@ -1,0 +1,160 @@
+#include stditems.rbh
+'---------------
+#org 0x16AAA1        'ORIGINAL OFFSET: 0x16AAA1: MISTY
+setvar 0x8004 0x3
+setvar 0x8005 0x2
+special 0x174                                                           'Add fame checker info
+trainerbattle 0x1 0x19F 0x0 @msg_before @msg_onLoseFight 0x816AAD3      'first two are text, third is a script
+checkflag 0x297                 'has TM03 been given?
+if 0x0 goto 0x816AAF9           'if no (how many items do you have?!), try to give it
+msgbox 0x81922BF MSG_KEEPOPEN   '"TM03 teaches WATER PULSE.\pUse it ..."
+release
+end
+
+'---------------
+#org 0x16AAD3         'right after the battle, begin here
+setvar 0x8004 0x3
+setvar 0x8005 0x1
+special 0x173         'Fame checker stuff
+setflag 0x4B1         'change text of the dude at the entrance
+setflag 0x821         'enable the cascadebadge
+sethealingplace 0x4   'respawn point set to cerulean city
+setvar 0x8008 0x2     'gym badges gotten = 2
+call 0x81A6B18        'disable trainers based on badges
+goto 0x816AAF9        'and now for the actual dialogue (and TM03)
+
+'---------------
+#org 0x16AAF9
+msgbox 0x81922F7 MSG_KEEPOPEN  '"The CASCADEBADGE makes all\nPOKÈMO..."
+checkitemroom ITEM_TM03 0x1    'see if TM03 can be given
+compare LASTRESULT 0x0         'if not enough room...
+if 0x1 goto 0x816AB3A          'you're bad at managing your inventory and get unique dialogue WutFace
+additem ITEM_TM03 0x1          'add TM03 to the inventory
+loadpointer 0x0 @msg_TM03      '"[player] received TM03\nfrom MISTY..."
+giveitem2 ITEM_TM03 0x1 0x101  'play the little fanfare here...does this add a second TM03???
+setflag 0x297                  'TM03 has been given
+msgbox 0x81922BF MSG_KEEPOPEN  '"TM03 teaches WATER PULSE.\pUse it ..."
+release
+end
+
+'---------------
+#org 0x1A6B18
+copyvar 0x8000 0x8008  'disable trainers of the "current" gym (could run into problems with nonlinear gyms in a more
+compare 0x8000 0x1     'expansive/nonlinear hack) :P
+if 0x1 goto 0x81A6B76
+compare 0x8000 0x2
+if 0x1 goto 0x81A6B7A
+compare 0x8000 0x3
+if 0x1 goto 0x81A6B81
+compare 0x8000 0x4
+if 0x1 goto 0x81A6B8B
+compare 0x8000 0x5
+if 0x1 goto 0x81A6BA1
+compare 0x8000 0x6
+if 0x1 goto 0x81A6BB4
+compare 0x8000 0x7
+if 0x1 goto 0x81A6BCA
+compare 0x8000 0x8
+if 0x1 goto 0x81A6BE0
+end
+
+'---------------
+#org 0x16AB3A
+msgbox @msg_wut MSG_KEEPOPEN '"You better make room for this!"
+release
+end
+
+'---------------
+#org 0x1A6B76           'cleartrainerflag makes a trainer unfightable. The name is misleading, as a flag is SET in RAM rather than CLEARED.
+cleartrainerflag 0x8E   'CAMPER LIAM
+return
+
+'---------------
+#org 0x1A6B7A
+cleartrainerflag 0x96   'PICNICKER DIANA
+cleartrainerflag 0xEA   'SWIMMERm LUIS
+return
+
+'---------------
+#org 0x1A6B81
+cleartrainerflag 0x8D   'SAILOR DWAYNE
+cleartrainerflag 0xDC   'ENGINEER BAILY
+cleartrainerflag 0x1A7  'GENTLEMAN TUCKER
+return
+
+'---------------
+#org 0x1A6B8B
+cleartrainerflag 0x84   'LASS KAY
+cleartrainerflag 0x85   'LASS LISA
+cleartrainerflag 0xA0   'PICNICKER TINA
+cleartrainerflag 0x109  'BEAUTY BRIDGET
+cleartrainerflag 0x10A  'BEAUTY TAMIA
+cleartrainerflag 0x10B  'BEAUTY LORI
+cleartrainerflag 0x192  'COOLTRAINER MARY
+return
+
+'---------------
+#org 0x1A6BA1
+cleartrainerflag 0x126  'TAMER PHIL
+cleartrainerflag 0x127  'TAMER EDGAR
+cleartrainerflag 0x120  'JUGGLER KIRK
+cleartrainerflag 0x121  'JUGGLER SHAWN
+cleartrainerflag 0x124  'JUGGLER KAYDEN
+cleartrainerflag 0x125  'JUGGLER NATE
+return
+
+'---------------
+#org 0x1A6BB4
+cleartrainerflag 0x118  'PSYCHIC JOHAN
+cleartrainerflag 0x119  'PSYCHIC TYRON
+cleartrainerflag 0x11A  'PSYCHIC CAMERON
+cleartrainerflag 0x11B  'PSYCHIC PRESTON
+cleartrainerflag 0x1CE  'CHANNELER AMANDA
+cleartrainerflag 0x1CF  'CHANNELER STACY
+cleartrainerflag 0x1D0  'CHANNELER TASHA
+return
+
+'---------------
+#org 0x1A6BCA
+cleartrainerflag 0xB1   'SUPER NERD ERIK
+cleartrainerflag 0xB2   'SUPER NERD AVERY
+cleartrainerflag 0xB3   'SUPER NERD DEREK
+cleartrainerflag 0xB4   'SUPER NERD ZAC
+cleartrainerflag 0xD5   'BURGLAR QUINN
+cleartrainerflag 0xD6   'BURGLAR RAMON
+cleartrainerflag 0xD7   'BURGLAR DUSTY
+return
+
+'---------------
+#org 0x1A6BE0
+cleartrainerflag 0x128  'TAMER JASON
+cleartrainerflag 0x129  'TAMER COLE
+cleartrainerflag 0x142  'BLACK BELT ATSUSHI
+cleartrainerflag 0x143  'BLACK BELT KIYO
+cleartrainerflag 0x144  'BLACK BELT TAKASHI
+cleartrainerflag 0x188  'COOLTRAINER SAMUEL
+cleartrainerflag 0x190  'COOLTRAINER YUJI
+cleartrainerflag 0x191  'COOLTRAINER WARREN
+return
+
+
+'---------
+' Strings
+'---------
+#org @msg_before
+= Be prepared to be beaten by a\nBRIT!\c\h0B[Ke]¿
+
+#org @msg_onLoseFight
+= [.]Where did you say you're from?\nWas it CANADA?\pAnyways, I guess I'm supposed to\ngive you the CASCADEBADGE.\lHere you go!
+
+#org 0x1922BF
+= TM03 teaches WATER PULSE.\pUse it on an aquatic POKÈMON!
+
+#org 0x1922F7
+= The CASCADEBADGE makes all\nPOKÈMON up to Lv. 30 obey.\pThat includes even outsiders you\ngot in trades.\pThere's more. You can now use CUT\nanytime, even out of battle.\pYou can CUT down small trees to\nopen new pathways.\pYou can also have my favorite TM.
+
+#org @msg_TM03
+= [player] received TM03\nfrom KIESWETTER.
+
+#org @msg_wut
+= You better make room for this!

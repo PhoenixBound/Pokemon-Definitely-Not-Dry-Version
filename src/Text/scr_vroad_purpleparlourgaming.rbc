@@ -1,0 +1,18 @@
+'---------------
+#org @start
+trainerbattle 0x0 0x18C 0x0 @before @after
+msgbox @default MSG_NORMAL '"Tch!\nI concede, you are better th..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @before
+= You've made it this far!\pLet's see if you can beat my epic\nPOKÈMON team!
+
+#org @after
+= Well[.]I guess you're the better\ntrainer[.]
+
+#org @default
+= PURPLEPARLOURGAMING on TWITCH - be\nsure to watch him!\lHe's so awesome.
