@@ -1,0 +1,167 @@
+#include stditems.rbh
+#dynamic 0x800000
+'---------------
+#org 0x16D54E                                                 '0x16D54E
+setvar 0x8004 0x6                                             'Fame checker stuff
+setvar 0x8005 0x2
+special 0x174
+trainerbattle 0x1 0x1A2 0x0 @msg_beforeBattle @msg_onLoseFight 0x816D580     'Display message, initiate battle, then afterwards jump to 0x16D580
+checkflag 0x259                                               'Was TM06 given already?
+if 0x0 goto 0x816D5A6                                         'If not, goto after-battle script
+msgbox 0x8198481 MSG_KEEPOPEN        '"When afflicted by TOXIC, a POKÈMON..."
+release
+end
+
+'---------------
+#org 0x16D580     'after-battle script
+setvar 0x8004 0x6
+setvar 0x8005 0x1
+special 0x173     'fame checker stuff
+clearflag 0x9F    '??? This is normally set when the game boots...
+setflag 0x4B4     'Change champ-in-making guy text
+setflag 0x824     'Activate badge effects
+setvar 0x8008 0x5 'Set badge number to 5
+call 0x81A6B18    'TODO: replace with conditional call to "would you like to set this" message
+goto 0x816D5A6    'continue with dialogue
+
+'---------------
+#org 0x16D5A6
+msgbox 0x819850E MSG_KEEPOPEN '"Now that you have the SOULBADGE,\n..."
+checkitemroom ITEM_TM06 0x1   'Is there enough room for one TM06?
+compare LASTRESULT 0x0        'If not...
+if 0x1 goto 0x816D5E7         '...then jump to script for "make room" dialogue
+additem ITEM_TM06 0x1         'Add a TM06 to the inventory
+loadpointer 0x0 @msg_given    '"[player] received TM06\nfrom KOGA."
+giveitem2 0x126 0x1 0x101     'play fanfare and display message (again, is this a second "give"?)
+setflag 0x259                 'TM06 has been given
+msgbox 0x81985AB MSG_KEEPOPEN '"Sealed within that TM06 lies\nTOXI..."
+release
+end
+
+'---------------
+#org 0x1A6B18
+copyvar 0x8000 0x8008
+compare 0x8000 0x1
+if 0x1 goto 0x81A6B76
+compare 0x8000 0x2
+if 0x1 goto 0x81A6B7A
+compare 0x8000 0x3
+if 0x1 goto 0x81A6B81
+compare 0x8000 0x4
+if 0x1 goto 0x81A6B8B
+compare 0x8000 0x5
+if 0x1 goto 0x81A6BA1
+compare 0x8000 0x6
+if 0x1 goto 0x81A6BB4
+compare 0x8000 0x7
+if 0x1 goto 0x81A6BCA
+compare 0x8000 0x8
+if 0x1 goto 0x81A6BE0
+end
+
+'---------------
+#org 0x16D5E7                     'while this IS modified, it fits in the existing space
+msgbox @msg_makeRoom MSG_KEEPOPEN '"Make space for this, child!"
+release
+end
+
+'---------------
+'#org 0x1A6B76
+'cleartrainerflag 0x8E
+'return
+
+'---------------
+'#org 0x1A6B7A
+'cleartrainerflag 0x96
+'cleartrainerflag 0xEA
+'return
+
+'---------------
+'#org 0x1A6B81
+'cleartrainerflag 0x8D
+'cleartrainerflag 0xDC
+'cleartrainerflag 0x1A7
+'return
+
+'---------------
+'#org 0x1A6B8B
+'cleartrainerflag 0x84
+'cleartrainerflag 0x85
+'cleartrainerflag 0xA0
+'cleartrainerflag 0x109
+'cleartrainerflag 0x10A
+'cleartrainerflag 0x10B
+'cleartrainerflag 0x192
+'return
+
+'---------------
+'#org 0x1A6BA1
+'cleartrainerflag 0x126
+'cleartrainerflag 0x127
+'cleartrainerflag 0x120
+'cleartrainerflag 0x121
+'cleartrainerflag 0x124
+'cleartrainerflag 0x125
+'return
+
+'---------------
+'#org 0x1A6BB4
+'cleartrainerflag 0x118
+'cleartrainerflag 0x119
+'cleartrainerflag 0x11A
+'cleartrainerflag 0x11B
+'cleartrainerflag 0x1CE
+'cleartrainerflag 0x1CF
+'cleartrainerflag 0x1D0
+'return
+
+'---------------
+'#org 0x1A6BCA
+'cleartrainerflag 0xB1
+'cleartrainerflag 0xB2
+'cleartrainerflag 0xB3
+'cleartrainerflag 0xB4
+'cleartrainerflag 0xD5
+'cleartrainerflag 0xD6
+'cleartrainerflag 0xD7
+'return
+
+'---------------
+'#org 0x1A6BE0
+'cleartrainerflag 0x128
+'cleartrainerflag 0x129
+'cleartrainerflag 0x142
+'cleartrainerflag 0x143
+'cleartrainerflag 0x144
+'cleartrainerflag 0x188
+'cleartrainerflag 0x190
+'cleartrainerflag 0x191
+'return
+
+
+'---------
+' Strings
+'---------
+#org @msg_beforeBattle '0x19832E
+= BEAR FIGHTING! \hF9\hFA\c\h0B[Ke]¿
+'Original = KOGA: Fwahahaha!\pA mere child like you dares to\nchallenge me?\pThe very idea makes me shiver\nwith mirth!\pVery well, I shall show you true\nterror as a ninja master.\pPoison brings steady doom.\nSleep renders foes helpless.\pDespair to the creeping horror of\nPOISON-type POKÈMON!\c\h0B[Ke]¿
+
+#org @msg_onLoseFight '0x198444
+= Humph! It's as if I was training\nteddy bears this whole time[.]\pAnyways, take this BADGE. It would\nsuit a bear fighter like you.
+'= Humph!\nYou have proven your worth!\pHere!\nTake the SOULBADGE!
+
+#org @msg_default '0x198481
+= When afflicted by TOXIC, a POKÈMON\nsuffers more and more.\pIt suffers worsening damage as the\nbattle wears on!\pIt will surely terrorize the\nbears you come across!
+
+'#org 0x19850E  Not changing this, it fits as-is
+'= Now that you have the SOULBADGE,\nthe DEFENSE of your POKÈMON rises.\pIt also lets you SURF outside of\nbattle.\pAh!\nTake this, too!
+
+#org @msg_given '0x19858F
+= [player] received TM06\nfrom SHYVIOLET.
+
+'#org 0x1985AB  Not changing this, it fits as-is
+'= Sealed within that TM06 lies\nTOXIC!\pIt is a secret technique dating\nback some four hundred years.
+
+#org @msg_makeRoom '0x19860D
+= [.]Well, you could take this, but\nit looks like you overprepared for\lthe battle and have no space for\lthis.
+'Original = Make space for this, child!

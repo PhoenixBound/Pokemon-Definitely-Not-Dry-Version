@@ -10,10 +10,10 @@ end
 ' Strings
 '---------
 #org @before
-= Pssh! You won't be getting past\nme!
+= Pssh! You think you can walk in\nfront of me without a battle?\lThink again!
 
 #org @after
-= Wha-? Wow[.]I guess you made it\npast me. Congrats.
+= [.]NO!! RAICHUUU!!! How COULD you?!
 
 #org @default
-= Fighting tough battles[.]so easy-\nsounding on paper, right?
+= [player], you[.]\pYou MONSTER!!! \hF9\hFB
