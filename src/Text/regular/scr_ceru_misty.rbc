@@ -171,4 +171,4 @@ end
 = Erm[.][player]?\nThe BAG is full[.]\lHow did you manage that already?
 
 #org @msg_trainerClear
-= [grey_fr]Would you like to keep fighting\nTRAINERS in this GYM?
+= [black_fr]Would you like to keep fighting\nTRAINERS in this GYM?
