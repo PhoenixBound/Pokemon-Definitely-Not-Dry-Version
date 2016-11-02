@@ -46,17 +46,17 @@ end
 '--------
 
 #org 0x1AA649
-trainerbattle 0x4 0x1E6 0x0 0x81858A6 0x81858D0 0x8185908
+trainerbattle 0x4 0x1E6 0x0 @msg_giaBefore1 @msg_giaOnLoseFight @msg_giaInsufficient
 special2 LASTRESULT 0x39
 compare LASTRESULT 0x1
 if 0x1 goto 0x81AA674
-msgbox 0x81858E2 MSG_NORMAL '"GIA: JES, you silly!\nYou ruined t..."
+msgbox @msg_giaDefault MSG_NORMAL '"GIA: JES, you silly!\nYou ruined t..."
 end
 
 '---------------
 #org 0x1AA674
 trainerbattle 0x7 0x1E6 0x0 0x81C219B 0x81858D0 0x8185908
-msgbox 0x81858E2 MSG_NORMAL '"GIA: JES, you silly!\nYou ruined t..."
+msgbox @msg_giaDefault MSG_NORMAL '"GIA: JES, you silly!\nYou ruined t..."
 end
 
 
