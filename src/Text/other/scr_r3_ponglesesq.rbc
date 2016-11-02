@@ -1,0 +1,35 @@
+#dynamic 0x800000
+'---------------
+#org 0x1A9407
+trainerbattle 0x0 0x5A 0x0 @msg_before @msg_onLoseFight
+special2 LASTRESULT 0x39
+compare LASTRESULT 0x1
+if 0x1 goto 0x81A942E
+msgbox @msg_default MSG_NORMAL '"I always wear shorts, even in\nwin..."
+end
+
+'---------------
+#org 0x1A942E
+trainerbattle 0x5 0x5A 0x0 @msg_before2 @msg_onLoseFight
+msgbox @msg_default MSG_NORMAL '"I always wear shorts, even in\nwin..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before '0x183786
+= I like yer butt.
+'original = Hey! You're not wearing shorts!\nWhat's wrong with you?
+
+#org @msg_onLoseFight '0x1837BD
+= [.]On second thought, shut your\nbutt.
+'original = Lost!\nLost! Lost!
+
+#org @msg_default '0x1837CF
+= People with good butts are good\npeople. That's my policy.
+'original = I always wear shorts, even in\nwinter. That's my policy.
+
+#org @msg_before2 '0x1C1588
+= I still like yer butt.
+'original = Hey! What's wrong with you?\nYou're still not wearing shorts!

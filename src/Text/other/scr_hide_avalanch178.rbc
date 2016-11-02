@@ -1,0 +1,57 @@
+#dynamic 0x800000
+'---------------
+#org 0x161418
+trainerbattle 0x2 0x16F 0x0 @msg_before @msg_onLoseFight 0x8161433  'initiate battle with jingle, then execute a script when player wins
+msgbox 0x817546A MSG_NORMAL '"BOSS!\nI'm sorry I failed you!"
+end
+
+'---------------
+'---- #org 0x161433           'continue here after battle
+'---- setvar 0x4001 0x0       'this is now zero
+'---- checktrainerflag 0x16E  'has left grunt been fought?
+'---- if 0x1 call 0x8161311   'if so, add 1 to previous var
+'---- checktrainerflag 0x16F  'has this grunt (AVALANCH178) been fought?
+'---- if 0x1 call 0x8161311   'if so, add 1 to previous var
+'---- compare 0x4001 0x2      'have both trainers been fought?
+'---- if 0x1 call 0x81614A1   'if yes, do some setmaptile's
+'---- compare 0x4001 0x2      'have both trainers been fought?
+'---- if 0x1 call 0x8161462   'if yes, also play a sound and refresh the map
+'---- release
+'---- end
+
+'---------------
+'---- #org 0x161311
+'---- addvar 0x4001 0x1
+'---- return
+
+'---------------
+'---- #org 0x1614A1
+'---- setmaptile 0x11 0xC 0x282 0x0
+'---- setmaptile 0x12 0xC 0x281 0x0
+'---- setmaptile 0x11 0xD 0x282 0x0
+'---- setmaptile 0x12 0xD 0x281 0x0
+'---- setmaptile 0x11 0xE 0x282 0x0
+'---- setmaptile 0x12 0xE 0x281 0x0
+'---- return
+
+'---------------
+'---- #org 0x161462
+'---- sound 0x26    'play DA-DUN
+'---- special 0x8E  'this refreshes the map
+'---- checksound    'acts as a "waitsound" command probably
+'---- return
+
+
+'---------
+' Strings
+'---------
+#org @msg_before '0x175437
+= You think it's gonna be that\neasy?!
+'original = How can you not see the beauty of\nour evil?
+
+#org @msg_onLoseFight '0x175463
+= Why did that look so easy for\nyou?!
+'original = Ayaya!
+
+'-------- #org 0x17546A
+'original = BOSS!\nI'm sorry I failed you!

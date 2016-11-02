@@ -1,3 +1,4 @@
+#dynamic 0x800000
 '---------------
 #org @start
 trainerbattle 0x0 0x18C 0x0 @before @after

@@ -1,0 +1,22 @@
+#dynamic 0x800000
+'---------------
+#org 0x1622E5
+trainerbattle 0x0 0x15A 0x0 @msg_before @msg_onLoseFight
+msgbox 0x8177657 MSG_NORMAL '"So, you're stuck?\nTry jumping off..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before  '0x177628
+= HO-OH is a POKÈMON[.]AND the\nchemical 
+formula for hydrogen\lperoxide!
+'original = My mentor once lived here.
+
+#org @msg_onLoseFight   '0x177643
+= That's some intense chemistry you\nand your POKÈMON have!
+'original = Whew!\nOverwhelming!
+
+#org 0x177657     'This is enough...right?
+= So, you're stuck?\nTry jumping off over there!
