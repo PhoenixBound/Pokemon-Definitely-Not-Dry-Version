@@ -23,7 +23,7 @@ clearflag 0xA0
 setflag 0x4B2
 setflag 0x822
 setvar 0x8008 0x3
-call 0x81A6B18
+call 0x8800000    '0x800000 has a prompt that asks whether or not trainers should be disabled. More details on Misty's script.
 goto 0x816B9AF
 
 '---------------

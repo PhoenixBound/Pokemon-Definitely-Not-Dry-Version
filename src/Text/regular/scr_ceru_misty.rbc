@@ -41,11 +41,11 @@ end
 
 '---------------
 #org @disableTrainers              'Offset: 0x800000
-signmsg
+signmsg                            'Change textbox style to something less spoken
 msgbox @msg_trainerClear MSG_YESNO '"Would you like to keep fighting...?"
-normalmsg
-compare LASTRESULT 0x0
-if 0x1 call 0x81A6B18
+normalmsg                          'Revert textbox style change
+compare LASTRESULT 0x0             'If the answer to that was no...
+if 0x1 call 0x81A6B18              '...then check gym badge number and disable trainers in this gym.
 return
 
 '---------------
