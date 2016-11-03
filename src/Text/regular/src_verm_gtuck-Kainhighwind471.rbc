@@ -1,0 +1,29 @@
+'---------------
+#org 0x16BA35
+trainerbattle 0x2 0x1A7 0x0 0x8194E57 0x8194EA5 0x816BA5D
+setvar 0x8004 0x4
+setvar 0x8005 0x3
+special 0x173
+msgbox 0x8194EBD MSG_NORMAL '"It's not easy opening that door.\p..."
+end
+
+'---------------
+#org 0x16BA5D
+setvar 0x8004 0x4
+setvar 0x8005 0x2
+special 0x173
+release
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x194E57
+= Lets engage in a nice battle, my\nlittle friends are pretty strong.
+
+#org 0x194EA5
+= You have a nice potential my\nfriend
+
+#org 0x194EBD
+= You have fought well,hurry and\nheal your pokemon now

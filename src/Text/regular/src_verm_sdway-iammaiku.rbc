@@ -1,0 +1,21 @@
+'---------------
+#org 0x16B9FA
+trainerbattle 0x0 0x8D 0x0 0x8194FBD 0x8194FF1
+setvar 0x8004 0x4
+setvar 0x8005 0x4
+special 0x173
+msgbox 0x8195004 MSG_NORMAL '"LT. SURGE installed the traps in\n..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x194FBD
+= I'm addicted to graham crackers.\nPlease try my ham and waffles.
+
+#org 0x194FF1
+= Wow!\nSurprised me!
+
+#org 0x195004
+= LT. SURGE installed the traps in\nthe GYM himself.\pHe set up double locks everywhere.\nLet me give you a hint.\pWhen you open the first lock, the\nsecond lock is right next to it.
