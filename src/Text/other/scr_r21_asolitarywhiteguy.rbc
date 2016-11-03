@@ -1,15 +1,15 @@
 #dynamic 0x800000
 '---------------
-#org @start
+#org 0x1AB9F1
 trainerbattle 0x0 0xE7 0x0 @before1 @after
 special2 LASTRESULT 0x39
 compare LASTRESULT 0x1
-if 0x1 goto @vseek_lines
+if 0x1 goto 0x81ABA18
 msgbox @default MSG_NORMAL '"I seem to only catch MAGIKARP!"
 end
 
 '---------------
-#org @vseek_lines
+#org 0x1ABA18
 trainerbattle 0x5 0xE7 0x0 @before2 @after
 msgbox @default MSG_NORMAL '"I seem to only catch MAGIKARP!"
 end
@@ -18,14 +18,18 @@ end
 '---------
 ' Strings
 '---------
-#org @before1
+#org @before1  '0x1883C6
 = Go, my AIPOMS! Win!
+'original = I got a big haul!\nWanna go for it?
 
-#org @after
+#org @after    '0x1883E9
 = How could my AIPOMS lose?
+'original = Heheh, MAGIKARP just don't make\nthe grade, do they?
 
-#org @default
+#org @default  '0x18841D
 = I seem to never catch MAGIKARP out\nhere.\lI wonder why[.]
+'original = I seem to only catch MAGIKARP!
 
-#org @before2
+#org @before2  '0x1C3231
 = My AIPOMS will win this time!
+'original = I got a big haul again!\nWanna go for it once more?
