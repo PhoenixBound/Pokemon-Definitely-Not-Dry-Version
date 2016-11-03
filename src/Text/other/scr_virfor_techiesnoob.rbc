@@ -1,0 +1,22 @@
+#dynamic 0x800000
+'---------------
+#org 0x1605CD
+trainerbattle 0x0 0x214 0x0 0x81724F9 0x817251B
+msgbox 0x8172527 MSG_NORMAL '"BUG POKÈMON evolve quickly.\nThey'..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before '0x1724F9
+= XWATER sometimes sneaks into my\nbedroom.
+'original = Did you know that POKÈMON evolve?
+
+#org @msg_onLoseFight '0x17251B
+= Ahhh! Get out of my room,\n[player]!
+'original = Oh!\nI lost!
+
+#org @msg_default '0x172527
+= [.]Hey, wait a sec. This isn't my\nroom. I'm okay with you being this\lclose to me here, [player].\lHehehe.
+'original = BUG POKÈMON evolve quickly.\nThey're a lot of fun!

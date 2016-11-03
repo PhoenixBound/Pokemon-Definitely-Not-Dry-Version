@@ -1,30 +1,34 @@
+#dynamic 0x800000
 '---------------
-#org @start
+#org 0x1A9F69
 trainerbattle 0x0 0x1D1 0x0 @before1 @after
 special2 LASTRESULT 0x39
 compare LASTRESULT 0x1
-if 0x1 goto @vseek_lines
-msgbox @default MSG_NORMAL '"You sure had guts standing up to\n..."
+if 0x1 goto 0x81A9F90
+msgbox 0x1849B0 MSG_NORMAL '"You sure had guts standing up to\n..."
 end
 
 '---------------
-#org @vseek_lines
+#org 0x1A9F90
 trainerbattle 0x5 0x1D1 0x0 @before2 @after
-msgbox @default MSG_NORMAL '"You sure had guts standing up to\n..."
+msgbox 0x1849B0 MSG_NORMAL '"You sure had guts standing up to\n..."
 end
 
 
 '---------
 ' Strings
 '---------
-#org @before1
+#org @before1 '0x18495E
 = Hahahaha! I see the trash\nchallenges me!
+'original = Bwahaha!\nGreat! I was bored, eh!
 
-#org @after
+#org @after '0x18497F
 = Haha[.]I see the trash was quite a\nchallenge[.]
+'original = Keep it coming, eh!\pOh wait.\nI'm out of POKÈMON!
 
-#org @default
-= You sure had guts standing up to\nme there, eh?
+'---- #org 0x1849B0
+'---- = You sure had guts standing up to\nme there, eh?
 
-#org @before2
+#org @before2 '0x1C1B37
 = Hahahaha! I see the trash\nchallenges me again!
+'original = Bwahaha!\nGreat! I was bored again, eh!

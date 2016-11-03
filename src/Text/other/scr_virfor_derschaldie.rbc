@@ -1,0 +1,22 @@
+#dynamic 0x800000
+'---------------
+#org 0x160571
+trainerbattle 0x0 0x66 0x0 @msg_before @msg_onLoseFight
+msgbox 0x8172315 MSG_NORMAL '"Ssh! You'll scare the bugs away.\n..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before '0x1722C7
+= Please don't hurt my cute POKÈMON!\nI beg you! \hF9\hF5
+'original = Hey! You have POKÈMON!\nCome on!\lLet's battle 'em!
+
+#org @msg_onLoseFight '0x1722F9
+= NO!!! MAGIKARP! What are you, a\nhacker?!
+'original = No!\nCATERPIE can't hack it!
+
+#org @msg_default '0x172315
+= I-I paid a lot of money for that\nPOKÈMON[.] Now what'll I do?
+'original = Ssh! You'll scare the bugs away.\nAnother time, okay?

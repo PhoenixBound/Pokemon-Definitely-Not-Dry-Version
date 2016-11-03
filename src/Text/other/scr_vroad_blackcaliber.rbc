@@ -1,5 +1,6 @@
-'--------------- Originally decompiled from 0x160F64
-#org @start
+#dynamic 0x800000
+'---------------
+#org 0x160F64
 trainerbattle 0x0 0x196 0x0 @before @after
 msgbox @default MSG_NORMAL '"I never wanted to lose to anybody,..."
 end
@@ -8,11 +9,14 @@ end
 '---------
 ' Strings
 '---------
-#org @before
+#org @before '0x174710
 = You have a ways to go!
+'original = I wonder if you are good enough\nfor me?
 
-#org @after
+#org @after '0x174738
 = The question is, which way is the\nright way?
+'original = I lost out[.]
 
-#org @default
+#org @default '0x174744
 = I guess we both have a bit of\nwalking to do if either of us is\lgoing to find the POKÈMON LEAGUE.
+'original = I never wanted to lose to anybody,\nespecially to a younger kid[.]

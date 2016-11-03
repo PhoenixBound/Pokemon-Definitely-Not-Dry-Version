@@ -1,6 +1,6 @@
 #dynamic 0x800000
 '---------------
-#org @start
+#org 0x160D8F
 trainerbattle 0x0 0x8B 0x0 @before @after
 msgbox @default MSG_NORMAL '"Sea POKÈMON live in deep water.\nY..."
 end
@@ -9,11 +9,14 @@ end
 '---------
 ' Strings
 '---------
-#org @before
+#org @before '0x1742A6
 = I'll show you mine if you show me\nyours!
+'original = I like feisty kids like you!
 
-#org @after
+#org @after '0x1742C3
 = Nice, nice[.]
+'original = Argh!\nLost it!
 
-#org @default
+#org @default '0x1742D2
 = You'll probably need a ROD to fish\nfor sea POKÈMON. Ha ha!
+'original = Sea POKÈMON live in deep water.\nYou'll need a ROD to fish them up!

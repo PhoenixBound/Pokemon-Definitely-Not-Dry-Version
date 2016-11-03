@@ -1,6 +1,6 @@
 #dynamic 0x800000
 '---------------
-#org @start
+#org 0x16059F
 trainerbattle 0x0 0x68 0x0 @before @lose
 msgbox @default MSG_NORMAL '"Sometimes, you can find stuff on\n..."
 end
@@ -9,11 +9,14 @@ end
 '---------
 ' Strings
 '---------
-#org @before
+#org @before '0x1723D4
 = [player], you need some milk[.]
+'original = Hey, wait up!\nWhat's the hurry? Why the rush?
 
-#org @lose
+#org @lose '0x172402
 = [player], I need some milk[.]
+'original = I give!\nYou're good at this!
 
-#org @default
-= Now, where did they sell milk\nagain[.]?\pThat's right, it was TWO ISLAND.
+#org @default '0x17241F
+= You know what? To heck with milk!\nWhat I need right now is a POTION.\pNow, where did I drop it[.]? I bet\nyou I'm staring straight at it[.]\pI really hope it isn't right in\nfront of me, though.
+'original = Sometimes, you can find stuff on\nthe ground.\pI'm looking for the stuff I\ndropped. Can you help me?

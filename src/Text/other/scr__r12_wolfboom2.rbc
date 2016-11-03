@@ -1,0 +1,84 @@
+#dynamic 0x800000
+'---------------
+#org 0x1AA603
+trainerbattle 0x4 0x1E6 0x0 @msg_before1 @msg_onLoseFight @msg_insufficient  'begin double battle with specified strings (unless already fought)
+special2 LASTRESULT 0x39                                                     'is/was it time for a rematch?  
+compare LASTRESULT 0x1                                                       'if so...
+if 0x1 goto 0x81AA62E                                                        '...then initiate a rematch double battle in this script
+msgbox @msg_default MSG_NORMAL                                               '"JES: Oh, GIA, forgive me,\nmy love..."
+end
+
+'---------------
+#org 0x1AA62E
+trainerbattle 0x7 0x1E6 0x0 @msg_before2 @msg_onLoseFight @msg_insufficient  'initiate a rematch double battle
+msgbox @msg_default MSG_NORMAL                                               '"JES: Oh, GIA, forgive me,\nmy love..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before1 '0x1857C5
+= WOLFBOOM: Whatever you do[.]don't\nwin. She will hunt you down.\pPURRINA: I will do it, ya know.
+'original = JES: If I win, I'm going to\npropose to GIA.
+
+#org @msg_onLoseFight '0x1857F1
+= WOLFBOOM: \c\h15Run, dude!!\n\c\h16PURRINA: GET BACK HERE!  'Check this for overflow, it uses a wider font
+'original = JES: Oh, please, why couldn't you\nlet us win?
+
+#org @msg_insufficient '0x185842
+= WOLFBOOM: Look, kid[.]uh[.]you don't\nwant to fight us because, um[.]\p[.]because then it would be 2 on 1!\nYeah, that's it!\pPURRINA: Please don't come back\nhere and try to win.
+'original = JES: GIA and I, we'll be\ntogether forever.\pWe won't battle unless you have\ntwo POKÈMON of your own.
+
+#org @msg_default '0x18581F
+= WOLFBOOM: I'm holding her down.\nBut seriously, what are you doing\lhere?!\pPURRINA: I know where you live,\nkid!
+'original = JES: Oh, GIA, forgive me,\nmy love!
+
+#org @msg_before2 '0x1C216B
+= WOLFBOOM: She hasn't forgotten\nyou. She's going to hunt you down.\pPURRINA: I've been waiting for\nthis rematch!
+'original = JES: I'll win here today and\npropose to my GIA.
+
+
+
+'--------
+'I feel generous, so I'm going to give unique dialogue to Purrina that's in the opposite order.
+'I am going to keep it in the same file, though. It's not like there's adverse effects to that.
+'--------
+
+#org 0x1AA649
+trainerbattle 0x4 0x1E6 0x0 @msg_giaBefore1 @msg_giaOnLoseFight @msg_giaInsufficient
+special2 LASTRESULT 0x39
+compare LASTRESULT 0x1
+if 0x1 goto 0x81AA674
+msgbox @msg_giaDefault MSG_NORMAL '"GIA: JES, you silly!\nYou ruined t..."
+end
+
+'---------------
+#org 0x1AA674
+trainerbattle 0x7 0x1E6 0x0 0x81C219B 0x81858D0 0x8185908
+msgbox @msg_giaDefault MSG_NORMAL '"GIA: JES, you silly!\nYou ruined t..."
+end
+
+
+'---------
+' Strings (again)
+'---------
+#org @msg_giaBefore1 '0x1858A6
+= PURRINA: If you win, I swear I'll\nhunt you down.\pWOLFBOOM: There's no doubt in my\nmind she would do it.
+'original = GIA: Hey, JES[.]\pIf we win, I'll marry you!
+
+#org @msg_giaOnLoseFight '0x1858D0
+= PURRINA: YOU ARE SO DEAD!\nWOLFBOOM: \c\h15Run!!\c\h16
+'original = GIA: Oh, but why?
+
+#org @msg_giaInsufficient '0x185908
+= PURRINA: Don't you dare try to\nbeat me. Especially with that\lhot-shot team you're trying to\lpull off.\pWOLFBOOM: Leave and don't come\nback. It's for your own good[.]
+'original = GIA: I can't bear to battle\nwithout my JES!\pDon't you have one more POKÈMON?
+
+#org @msg_giaDefault '0x1858E2
+= PURRINA: Grr[.]once I break free\nfrom WOLFBOOM's grip, I'm coming\lfor you, kid!\pWOLFBOOM: She knows where you\nlive! Run away already!
+'original = GIA: JES, you silly!\nYou ruined this!
+
+#org @msg_giaBefore2 '0x1C219B
+= PURRINA: \c\15You again!\c\16\nI'm gonna get my revenge now!\pWOLFBOOM: There's no doubt in my\nmind she'll do it[.]
+'original = GIA: Hey, JES[.]\nI've been waiting a long time now.\pIf we win today, I'll marry you!
