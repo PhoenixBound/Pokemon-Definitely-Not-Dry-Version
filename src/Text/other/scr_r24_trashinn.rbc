@@ -2,7 +2,59 @@
 
 #dynamic 0x800000
 '---------------
-#org 0x168620
+'---- #org 0x168660               'Furthest "walk past entrypoint begins here
+'---- lockall
+'---- setvar 0x4001 0x0
+'---- goto 0x8168678
+
+'---------------
+'---- #org 0x16866C               'Closest "walk past" entrypoint begins here
+'---- lockall
+'---- setvar 0x4001 0x1
+'---- goto 0x8168678
+
+'---------------
+#org 0x168678
+textcolor 0x0                       'Make it look like a dude's talking and not a script tile
+compare 0x4001 0x0                  'did the player step on the furthest tile?
+if 0x1 call 0x81686FD               'if so, make player step left and then come back
+compare 0x4001 0x1                  'did player step on the closer tile?
+if 0x1 call 0x8168708               'if so, have player just face left and then come back
+applymovement MOVE_PLAYER 0x81A75EB 'have the player face right
+waitmovement 0x0                    'wait for "moving" to finish
+msgbox @msg_start MSG_KEEPOPEN      '"Congratulations! You beat our\nfiv..."
+checkitemroom ITEM_NUGGET 0x1       'can 1 NUGGET be given?
+compare LASTRESULT 0x0              'if not...
+if 0x1 goto 0x8168713               '...then go to the "no-room" message and stop script
+call 0x81686B9                      'give the NUGGET and more! scroll down a bit more
+releaseall
+end
+
+'---------------
+'---- #org 0x1686FD
+'---- applymovement 0x1 0x816873E         'Step left
+'---- waitmovement 0x0
+'---- return
+
+'---------------
+'---- #org 0x168708
+'---- applymovement 0x1 0x81A75E7         'Face left
+'---- waitmovement 0x0
+'---- return
+
+'---------------
+#org 0x168713                       '"No room" message for walking-past entrypoints
+msgbox @msg_wut MSG_KEEPOPEN       '"You don't have any room!"
+closeonkeypress                     'close msgbox
+applymovement MOVE_PLAYER 0x8168743 'walk down
+waitmovement 0x0                    'wait for moving to finish
+compare 0x4001 0x0                  'did player step on the further script tile?
+if 0x1 call 0x8168733               'if so then do "step right - face left"
+release
+end
+
+'---------------
+#org 0x168620                 '"Talk directly" entrypoint begins here
 lock
 faceplayer
 compare 0x406B 0x1            'Are the bridge's script tiles disabled?
@@ -28,7 +80,7 @@ release
 end
 
 '---------------
-#org 0x1686B9
+#org 0x1686B9                         'Yay, something common to all the scripts!
 additem ITEM_NUGGET 0x1
 loadpointer 0x0 @msg_itemGet '"[player] received a NUGGET\nfrom t..."
 giveitem2 ITEM_NUGGET 0x1 0x101
@@ -41,6 +93,12 @@ trainerbattle 0x3 0x164 0x0 @msg_onLoseFight 'initiate battle with only losing t
 msgbox @msg_default MSG_KEEPOPEN         '"With your ability, you'd become\na..."
 setvar 0x406B 0x1                     'disable script tiles after the bridge
 return
+
+'---------------
+'---- #org 0x168733
+'---- applymovement 0x1 0x8168740
+'---- waitmovement 0x0
+'---- return
 
 
 '---------
@@ -69,3 +127,28 @@ return
 #org @msg_onLoseFight '0x188DDC - The website I use for reference says this is pre-battle text, but I really doubt that.
 = Gwahhhh! How did I lose?!
 'original = Arrgh!\nYou are good!
+
+
+'-----------
+' Movements
+'-----------
+'---- #org 0x1A75EB
+'---- #raw 0x30 'Face Right (Delayed)
+'---- #raw 0xFE 'End of Movements
+
+'---- #org 0x16873E
+'---- #raw 0x12 'Step Left (Normal)
+'---- #raw 0xFE 'End of Movements
+
+'---- #org 0x1A75E7
+'---- #raw 0x2F 'Face Left (Delayed)
+'---- #raw 0xFE 'End of Movements
+
+'---- #org 0x168743
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0xFE 'End of Movements
+
+'---- #org 0x168740
+'---- #raw 0x13 'Step Right (Normal)
+'---- #raw 0x2F 'Face Left (Delayed)
+'---- #raw 0xFE 'End of Movements
