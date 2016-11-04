@@ -1,0 +1,87 @@
+#dynamic 0x800000
+'---------------
+#org 0x1636D6
+trainerbattle 0x2 0x173 0x0 @msg_before @msg_onLoseFight 0x81636F1
+msgbox @msg_onLeave MSG_NORMAL '"You're not getting away with this!"
+end
+
+'---------------
+#org 0x1636F1                    'begin here after battle
+msgbox @msg_onLeave MSG_KEEPOPEN '"You're not getting away with this!"
+closeonkeypress                  'close msgbox
+getplayerpos 0x8004 0x8005       'store player's X and Y, respectively
+compare 0x8004 0xA               'X == 10?
+if 0x1 goto 0x8163725            'if so jump there and don't come back
+compare 0x8004 0x9               'X == 9?
+if 0x1 goto 0x8163735            'if so jump "there" and don't come back
+applymovement 0x4 0x8163754      'make this NPC walk downwards
+waitmovement 0x0                 'wait for moving to finish
+goto 0x8163745                   'continue script "there there"
+
+'---------------
+'---- #org 0x163725
+'---- applymovement 0x4 0x816374C   'make this NPC walk down a bunch, right, then down
+'---- waitmovement 0x0              'wait for moving to finish
+'---- goto 0x8163745                'continue script "there there"
+
+'---------------
+'---- #org 0x163735
+'---- applymovement 0x4 0x816375B   'make this NPC walk right then down a bunch
+'---- waitmovement 0x0              'wait for moving to finish
+'---- goto 0x8163745                'continue script "there there
+
+'---------------
+'---- #org 0x163745                 '"There there"
+'---- hidesprite 0x4                'Make this NPC disappear
+'---- release
+'---- end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x17A4CF
+= Get done, kid!\pGet.\nDone.
+'original = You're not saving anyone, kid!
+
+#org @msg_onLoseFight '0x17A4EE
+= Thank you for getting done.\nReally. Thank you.
+'original = Don't fight us ROCKETS!
+
+#org @msg_onLeave     '0x17A506
+= I guess that means I'm done here[.]\nand so are you.
+'original = You're not getting away with this!
+
+
+'-----------
+' Movements
+'-----------
+'---- #org 0x163754
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0xFE 'End of Movements
+
+'---- #org 0x16374C
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x13 'Step Right (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0xFE 'End of Movements
+
+'---- #org 0x16375B
+'---- #raw 0x13 'Step Right (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0xFE 'End of Movements

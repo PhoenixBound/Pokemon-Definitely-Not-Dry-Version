@@ -23,7 +23,7 @@ end
 'original = Hey! You're not wearing shorts!\nWhat's wrong with you?
 
 #org @msg_onLoseFight '0x1837BD
-= [.]On second thought, shut your\nbutt.
+= [.]On second thought, shut yer\nbutt and take my money.
 'original = Lost!\nLost! Lost!
 
 #org @msg_default '0x1837CF

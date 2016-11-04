@@ -1,0 +1,33 @@
+#dynamic 0x800000
+'---------------
+#org @start          '0x161093
+checkgender
+compare LASTRESULT 0x1
+if 0x1 goto @altTrainer
+trainerbattle 0x0 0x12A 0x0 0x8174942 0x817495A
+msgbox 0x8174969 MSG_NORMAL '"You earned the right to be on\nVIC..."
+end
+
+'---------------
+#org @altTrainer
+trainerbattle 0x0 0x12A 0x0 @msg_beforeAlt @msg_onLoseFight
+msgbox @msg_default MSG_NORMAL
+end
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x174942
+= You're in for a bad time, bro.
+'original = Come on!\nI'll whip you!
+
+#org @msg_onLoseFight '0x17495A
+= Was that ever a bad time for me!
+'original = I got whipped!
+
+#org @msg_default     '0x174969
+= I was sitting here looking for\npeople to battle[.]\pAnd I heard the sound of a girl's\nvoice talking about bad times.\pAnd the words "NO-HIT SANS." I'm\nconfused, what does that mean?
+'original = You earned the right to be on\nVICTORY ROAD[.]
+
+#org @msg_beforeAlt   'nonexistent
+= You're in for a bad time, sister.

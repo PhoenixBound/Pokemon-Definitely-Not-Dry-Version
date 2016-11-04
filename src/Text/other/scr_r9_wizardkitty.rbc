@@ -1,0 +1,35 @@
+#dynamic 0x800000
+'---------------
+#org 0x1A9E71
+trainerbattle 0x0 0x9A 0x0 @msg_before @msg_onLoseFight
+special2 LASTRESULT 0x39
+compare LASTRESULT 0x1
+if 0x1 goto 0x81A9E98
+msgbox @msg_default MSG_NORMAL '"The tunnel coming up is pitch-blac..."
+end
+
+'---------------
+#org 0x1A9E98
+trainerbattle 0x5 0x9A 0x0 @msg_before2 @msg_onLoseFight
+msgbox @msg_default MSG_NORMAL '"The tunnel coming up is pitch-blac..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x1847B7
+= Get out of the way!\nI'm trying to draw here!
+'original = You have POKÈMON with you!\nYou're mine!
+
+#org @msg_onLoseFight '0x1847DF
+= Great. Now the paper's all\ncrinkled up[.]
+'original = You deceived me[.]
+
+#org @msg_default     '0x1847F0
+= I wonder if I could get a good\nscene if I got a little higher up!
+'original = The tunnel coming up is pitch-black\ninside.\pYou'll need FLASH to get through\nthere.
+
+#org @msg_before2     '0x1C1A2E
+= Again?! Come on, get out of the\nway! I'm trying to draw here!
+'original = We're to battle again?\nThis time, you're mine!

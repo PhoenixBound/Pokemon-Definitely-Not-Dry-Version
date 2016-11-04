@@ -1,0 +1,35 @@
+#dynamic 0x800000
+'---------------
+#org 0x1A93C9
+trainerbattle 0x0 0x59 0x0 @msg_before @msg_onLoseFight
+special2 LASTRESULT 0x39
+compare LASTRESULT 0x1
+if 0x1 goto 0x81A93F0
+msgbox @msg_default MSG_NORMAL '"Are you using a POKÈMON CENTER's\n..."
+end
+
+'---------------
+#org 0x1A93F0
+trainerbattle 0x5 0x59 0x0 @msg_before2 @msg_onLoseFight
+msgbox @msg_default MSG_NORMAL '"Are you using a POKÈMON CENTER's\n..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x183560
+= I may not be a BUG CATCHER, but my\nBEAUTIFLY will crush you!
+'original = Hi!\nI like shorts!\pThey're delightfully comfy and\neasy to wear!
+
+#org @msg_onLoseFight '0x1835A0
+= I'll get you next time!
+'original = I don't believe it!
+
+#org @msg_default     '0x1835B4
+= Someday, I'm sure I'll beat you!
+'original = Are you using a POKÈMON CENTER's\nPC for storing your POKÈMON?\pEach BOX can hold up to\n30 POKÈMON.
+
+#org @msg_before2     '0x1C149D
+= My BEAUTIFLY will crush you this\ntime!
+'original = Hi! I like shorts!\nThey're comfy and easy to wear!\pYou should be wearing shorts, too!

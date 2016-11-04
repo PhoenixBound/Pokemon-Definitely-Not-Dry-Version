@@ -1,0 +1,22 @@
+#dynamic 0x800000
+'---------------
+#org 0x161065
+trainerbattle 0x0 0x11F 0x0 @msg_before @msg_onLoseFight
+msgbox @msg_default MSG_NORMAL '"[rival] also came through here."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x1748EE
+= AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!\nWHY ARE WE TOUCHIIIIING \hF9\hF7\lWhy did I do this to myself[.]?\lI just need to leave, but I won't\lbecause I like your streams.\lYou should invest in good POKÈMON.\lAlso, you should[.]um[.]\pWhy am I still talking?
+'original = Ah, so you wish to challenge the\nELITE FOUR?
+
+#org @msg_onLoseFight '0x17491B
+= Cool!
+'original = You got me!
+
+#org @msg_default     '0x174927
+= Cool.\p[.]\pI said, "cool." That's it.
+'original = [rival] also came through here.
