@@ -5,44 +5,44 @@ lock
 faceplayer
 setvar 0x8004 0x9
 setvar 0x8005 0x2
-special 0x174
-checkflag 0x4B8
-if 0x1 goto @onTalkAgain
+special 0x174              'fame checker stuff
+checkflag 0x4B8            'has LORELEI been beaten already this run?
+if 0x1 goto @onTalkAgain   'if so, go to the default dialogue
 setvar 0x8004 0x9
 setvar 0x8005 0x0
-special 0x173
+special 0x173              'fame checker stuff
 setvar 0x8004 0x9
 setvar 0x8005 0x1
-special 0x173
-checkflag 0x844
-if 0x0 call 0x8162641
-checkflag 0x844
-if 0x1 call 0x816264A
-setflag 0x3
-setflag 0x5
-checkflag 0x844
-if 0x0 call 0x8162653
-checkflag 0x844
-if 0x1 call 0x816265E
-clearflag 0x5
-goto 0x8162673
+special 0x173              'fame checker stuff
+checkflag 0x844            'is RSE trading enabled (ie is this a rematch)?
+if 0x0 call 0x8162641      'if not, say "hey dad"
+checkflag 0x844            'but...
+if 0x1 call 0x816264A      'if it is, say LORELEI's rematch text
+setflag 0x3                'do stuff
+setflag 0x5                'do more stuff
+checkflag 0x844            'is this a rematch?
+if 0x0 call 0x8162653      'if not, do the BREADSTICKS fight (only losing text allowed)
+checkflag 0x844            'is this a rematch?
+if 0x1 call 0x816265E      'if so, battle LORELEI's rematch team
+clearflag 0x5              'do even more stuff
+goto 0x8162673             'prepare advancement to the next ELITE FOUR member
 
 '---------------
-#org @onTalkAgain   'TODO: branch here
-checkflag 0x844
-if 0x1 call @afterFight1
-checkflag 0x844
-if 0x1 call @afterFight2
+#org @onTalkAgain
+checkflag 0x844           'is RSE trading enabled (ie is this a rematch)?
+if 0x0 call @afterFight1  'if not, say BREADSTICKS' closing dialogue
+checkflag 0x844           'but...
+if 0x1 call 0x162669      'if it is enabled, then say LORELEI's closing dialogue
 release
 end
 
 '---------------
 #org @afterFight1
-msgbox @msg_afterFight1 MSG_KEEPOPEN
+msgbox @msg_afterFight1 MSG_KEEPOPEN '"You might not be DADDY" etc
 return
 
 '---------------
-#org @afterFight2
+#org 0x162669
 msgbox 0x81781B0 MSG_KEEPOPEN '"You're better than I thought.\nGo ..."
 return
 
@@ -67,22 +67,20 @@ return
 '---- return
 
 '---------------
-#org 0x162673
-setflag 0x4B8
-call 0x81A7506
-msgbox 0x81781B0 MSG_KEEPOPEN '"You're better than I thought.\nGo ..."
-release
-end
+#org 0x162673                 'continue here after battle
+setflag 0x4B8                 'LORELEI has been beaten
+call 0x81A7506                'set up map and stuff
+goto @onTalkAgain             'display correct dialogue for this trainer and then end execution
 
 '---------------
-#org 0x1A7506
-applymovement MOVE_PLAYER 0x81A75FE
-waitmovement 0x0
-sound 0x8
-call 0x81A7538
-special 0x8E
-setflag 0x4
-return
+'---- #org 0x1A7506
+'---- applymovement MOVE_PLAYER 0x81A75FE
+'---- waitmovement 0x0
+'---- sound 0x8
+'---- call 0x81A7538
+'---- special 0x8E
+'---- setflag 0x4
+'---- return
 
 '---------------
 '---- #org 0x1A7538
@@ -97,20 +95,20 @@ return
 '---- #org 0x1781B0
 '---- = You're better than I thought.\nGo on ahead.\pYou only got a taste of the\nPOKÈMON LEAGUE's power.
 
-#org @msg_afterFight1
-= [.]Dang it, J!\pWhy didn't he remember to fix this\nline?!
+#org @msg_afterFight1  'nonexistent
+= You might not be DADDY, but con-\nsidering you beat MOTHER RUSSIA[.]\p[.]you're probably in good shape.\nWatch out, though.\p!save
 
-#org @msg_beforeFight1
-= Hey, dad!\c\h0B\h56\h01
+#org @msg_beforeFight1 '0x177FA4. Use a text editor if you want to find out what it says.
+= Hey, DAD!\c\h0B\h56\h01
 
 '---- #org 0x178089
 '---- = Welcome to the POKÈMON LEAGUE.\pI, LORELEI of the ELITE FOUR,\nhave returned!\pYou know how it goes.\nNo one can best me when it comes\lto icy POKÈMON.\pFreezing moves are powerful.\pYour POKÈMON will be at my mercy\nwhen they are frozen solid.\pHahaha!\nAre you ready?\c\h0B[Ke]¿
 
-#org @msg_onLoseFight
+#org @msg_onLoseFight  'nonexistent
 = [.]Huh?\nYou don't look like GUPPY[.]
 
-#org 0x178191
-= [.]Things shouldn't be this way!
+'---- #org 0x178191
+'---- = [.]Things shouldn't be this way!
 
 
 '-----------

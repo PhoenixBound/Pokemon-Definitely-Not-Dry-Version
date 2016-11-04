@@ -1,38 +1,38 @@
 #dynamic 0x800000
-'---------------        This script was decompiled from Pokemon FireRed Version 
+'--------------- 
 #org 0x1626EC          '@start
 lock
 faceplayer
 setvar 0x8004 0xA
 setvar 0x8005 0x2
-special 0x174          'Fame Checker: set person picture 0xA
-checkflag 0x4B9        'set if Bruno is beaten this E4 run
-if 0x1 goto 0x8162779  '@afterwards
+special 0x174          'fame checker stuff
+checkflag 0x4B9        'has BRUNO been beaten this E4 run?
+if 0x1 goto 0x8162779  'if so, display default dialogue and BRUNO movements
 setvar 0x8004 0xA
 setvar 0x8005 0x0
-special 0x173          'Fame Checker: do some weird thing
+special 0x173          'fame checker stuff
 setvar 0x8004 0xA
 setvar 0x8005 0x1
-special 0x173          'Fame Checker: do said weird thing again...?
-checkflag 0x82C        'is this a rematch E4 run? if no...
-if 0x0 call 0x8162751  '@beforeFight1
-checkflag 0x82C        'is this a rematch E4 run? if yes...
-if 0x1 call 0x816275A  '@beforeFight2, even though it's exactly the same.
-setflag 0x3            'some temporary flag
-setflag 0x5            'some temporary flag
-checkflag 0x844        'can trade with RSE? if no...
-if 0x0 call 0x8162763  '@beginFight1
-checkflag 0x844        'can trade with RSE? if yes...
-if 0x1 call 0x816276E  '@beginFight2
-clearflag 0x5
-goto 0x81627B0         '@afterFight
+special 0x173          'fame checker stuff
+checkflag 0x82C        'has E4 been beaten before?
+if 0x0 call 0x8162751  'if not, display pre-fight dialogue for JSALVATION
+checkflag 0x82C        'but...
+if 0x1 call 0x816275A  'if it is, display pre-fight dialogue for BRUNO rematch
+setflag 0x3            'do stuff
+setflag 0x5            'do more stuff
+checkflag 0x844        'is RSE trading enabled?
+if 0x0 call 0x8162763  'if not, battle JSALVATION
+checkflag 0x844        'but...
+if 0x1 call 0x816276E  'if it is, battle BRUNO's rematch
+clearflag 0x5          'do even more stuff
+goto 0x81627B0         'go do fancy stuff
 
 '---------------
-#org 0x162779                 '@afterwards
-msgbox 0x8178420 MSG_KEEPOPEN '"My job is done.\nGo face your next..."  also, MSG_KEEPOPEN == 0x4
+#org 0x162779                 'default dialogue here (0x162779)
+call @chooseDefaultDialogue   'call is 3 bytes shorter than msgbox, so this offset will not change
 closeonkeypress
-compare PLAYERFACING 0x2
-if 0x1 call 0x81627FA         '
+compare PLAYERFACING 0x2      'Depending on which way the player is facing...
+if 0x1 call 0x81627FA         'Bruno's direction changes.
 compare PLAYERFACING 0x1
 if 0x1 call 0x81627EF
 compare PLAYERFACING 0x3
@@ -43,109 +43,122 @@ release
 end
 
 '---------------
-#org 0x162751           '@beforeFight1
-msgbox @msg_beforeFight1 MSG_KEEPOPEN '"I am BRUNO of the ELITE FOUR!\pThr..."
+#org @chooseDefaultDialogue
+checkflag 0x844
+if 0x0 call @jsalDefault
+checkflag 0x844
+if 0x1 call @brunoDefault
 return
 
 '---------------
-#org 0x16275A           '@beforeFight2
-msgbox 0x817830C MSG_KEEPOPEN '"I am BRUNO of the ELITE FOUR!\pThr..."
+#org @jsalDefault
+msgbox @msg_afterwards MSG_KEEPOPEN
 return
 
 '---------------
-#org 0x162763           '@beginFight1
+#org @brunoDefault
+msgbox 0x8178420 MSG_KEEPOPEN '"My job is done.\nGo face your next..."
+return
+
+'---------------
+#org 0x162751           'pre-battle: JSALVATION
+msgbox @msg_beforeFight1 MSG_KEEPOPEN '"You finally got here." etc
+return
+
+'---------------
+'---- #org 0x16275A           'pre-battle: BRUNO
+'---- msgbox 0x817830C MSG_KEEPOPEN '"I am BRUNO of the ELITE FOUR!\pThr..."
+'---- return
+
+'---------------
+#org 0x162763           'fight JSALVATION
 trainerbattle 0x3 0x19B 0x0 @msg_onLoseFight
 return
 
 '---------------
-#org 0x16276E           '@beginFight2
-trainerbattle 0x3 0x2E0 0x0 0x8178409
-return
+'---- #org 0x16276E           'fight BRUNO
+'---- trainerbattle 0x3 0x2E0 0x0 0x8178409
+'---- return
 
 '---------------
-#org 0x1627B0             '@afterFight
+#org 0x1627B0             'fancy stuff begins here
 setflag 0x4B9             'Bruno was beaten
-call 0x81A7506            'door open effect
-msgbox @msg_afterwards MSG_KEEPOPEN '"My job is done.\nGo face your next..."
-closeonkeypress
-compare PLAYERFACING 0x2  '0x800C == PLAYERFACING
-if 0x1 call 0x81627FA     'Bruno faces right
-compare PLAYERFACING 0x1
-if 0x1 call 0x81627EF     'Bruno faces left
-compare PLAYERFACING 0x3
-if 0x1 call 0x8162805     'Bruno faces down
-compare PLAYERFACING 0x4
-if 0x1 call 0x8162805     'Bruno faces down
-release
-end
+call 0x81A7506            'change the map and do stuff like that
+goto 0x162779             'display branching dialogue (yay for space-saving techniques)
 
 '---------------
-#org 0x1627FA
-applymovement 0x1 0x81A75EB  'applymovement to Bruno: Face right (delayed)
-waitmovement 0x0
-return
+'---- #org 0x1627FA
+'---- applymovement 0x1 0x81A75EB  'applymovement to Bruno: Face right (delayed)
+'---- waitmovement 0x0
+'---- return
 
 '---------------
-#org 0x1627EF
-applymovement 0x1 0x81A75E7  'applymovement to Bruno: Face left (delayed)
-waitmovement 0x0
-return
+'---- #org 0x1627EF
+'---- applymovement 0x1 0x81A75E7  'applymovement to Bruno: Face left (delayed)
+'---- waitmovement 0x0
+'---- return
 
 '---------------
-#org 0x162805
-applymovement 0x1 0x81A75ED  'applymovement to Bruno: Face Down (delayed)
-waitmovement 0x0
-return
+'---- #org 0x162805
+'---- applymovement 0x1 0x81A75ED  'applymovement to Bruno: Face Down (delayed)
+'---- waitmovement 0x0
+'---- return
 
 '---------------
-#org 0x1A7506
-applymovement MOVE_PLAYER 0x81A75FE  'applymovement to player: delay for 10
-waitmovement 0x0
-sound 0x8                            'play sound (open door?)
-call 0x81A7538                       'setmaptile command
-special 0x8E                         'refresh map
-setflag 0x4                          'some temporary flag
-return
+'---- #org 0x1A7506
+'---- applymovement MOVE_PLAYER 0x81A75FE  'have the player "delay" for a period of 10
+'---- waitmovement 0x0                     'wait for delay to finish
+'---- sound 0x8                            'play a "choo-chee" sound (index 8)
+'---- call 0x81A7538                       'setmaptile command
+'---- special 0x8E                         'refresh map
+'---- setflag 0x4                          'do STUFF!
+'---- return
 
 '---------------
-#org 0x1A7538
-setmaptile 0x6 0x1 0x28E 0x1
-setmaptile 0x6 0x2 0x296 0x0
-return
+'---- #org 0x1A7538
+'---- setmaptile 0x6 0x1 0x28E 0x1
+'---- setmaptile 0x6 0x2 0x296 0x0
+'---- return
 
 
 '---------
 ' Strings
 '---------
-#org @msg_afterwards     '@msg_afterwards
-= Look...you're good. You could\nprobably beat the rest of us.\lBut will you?\pGo on, make this GYM MEMER proud!
+'---- #org 0x178420
+'---- = My job is done.\nGo face your next challenge.
 
-#org @msg_beforeFight1     '@msg_beforeFight1
-= [blue_fr]You finally got here.\pThis is the 2nd ELITE FOUR battle.\pBut it's my battle now.\p...Now give our boy Roy here\nsomething better to spout than\lEarthBound, would ya?\pI'm going full-on vanilla LIQUID\nCRYSTAL here!
+#org @msg_afterwards   'nonexistent
+= Look[.]you're good.\nAll our base can belonged to you!\pBut you must figure out how to\nmake your memes not be dreams.\pGo on and make this GYM MEMER\nproud!\p[.]Also, I'm not sure how much\ndanker this dialogue can get[.]
 
-#org 0x17830C     '@msg_beforeFight2
-= I am BRUNO of the ELITE FOUR!\pThrough rigorous training, people\nand POKÈMON can become stronger\lwithout limit.\pI've lived and trained with my\nfighting POKÈMON!\lAnd that will never change!\p[player]!\pWe will grind you down with our\nsuperior power!\pHoo hah!\c\h0B[Ke]¿
+#org @msg_beforeFight1 '0x17820F
+= You finally got here.\nThis is the 2nd ELITE FOUR battle.\lBut it's my battle now.\p[.]Now give our boy Roy here a\nbetter meme to spout.\pLet's see how well you fare\nagainst my WET VERSION 2 team!\c\h0B[Ke]¿
+'original is exactly the same as 0x17830C
 
-#org @msg_onLoseFight     '@msg_onLoseFight
-= Why?\nHow could I lose?
+'---- #org 0x17830C
+'---- = I am BRUNO of the ELITE FOUR!\pThrough rigorous training, people\nand POKÈMON can become stronger\lwithout limit.\pI've lived and trained with my\nfighting POKÈMON!\lAnd that will never change!\p[player]!\pWe will grind you down with our\nsuperior power!\pHoo hah!\c\h0B[Ke]¿
 
+#org @msg_onLoseFight  'nonexistent
+= I done goofed. How could I ever\nthink I would win at this?
+
+'---- #org 0x178409
+'---- = Why?\nHow could I lose?
 
 '-----------
 ' Movements
 '-----------
-#org 0x1A75EB
-#raw 0x30 'Face Right (Delayed)
-#raw 0xFE 'End of Movements
+'---- #org 0x1A75EB
+'---- #raw 0x30 'Face Right (Delayed)
+'---- #raw 0xFE 'End of Movements
 
-#org 0x1A75E7
-#raw 0x2F 'Face Left (Delayed)
-#raw 0xFE 'End of Movements
+'---- #org 0x1A75E7
+'---- #raw 0x2F 'Face Left (Delayed)
+'---- #raw 0xFE 'End of Movements
 
-#org 0x1A75ED
-#raw 0x2D 'Face Down (Delayed)
-#raw 0xFE 'End of Movements
+'---- #org 0x1A75ED
+'---- #raw 0x2D 'Face Down (Delayed)
+'---- #raw 0xFE 'End of Movements
 
-#org 0x1A75FE
-#raw 0x1C 'Delay5
-#raw 0x1C 'Delay5
-#raw 0xFE 'End of Movements
+'---- #org 0x1A75FE
+'---- #raw 0x1C 'Delay5
+'---- #raw 0x1C 'Delay5
+'---- #raw 0xFE 'End of Movements
