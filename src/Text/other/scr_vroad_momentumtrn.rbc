@@ -1,0 +1,22 @@
+#dynamic 0x800000
+'---------------
+#org 0x161103
+trainerbattle 0x0 0x189 0x0 0x8174B60 0x8174B83
+msgbox 0x8174B99 MSG_NORMAL '"So, it was you who beat GIOVANNI\n..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x174B60
+= Get gud, [player].\pKappa.
+'original = I heard rumors of a child prodigy.
+
+#org @msg_onLoseFight '0x174B83
+= Oh hey, you got gud.\nGG WP
+'original = The rumors were true!
+
+#org @msg_default     '0x174B99
+= Welcome to the ROMHACK, where the\nboys are men, the girls are men,\land the champions are hackers!
+'original = So, it was you who beat GIOVANNI\nof TEAM ROCKET?

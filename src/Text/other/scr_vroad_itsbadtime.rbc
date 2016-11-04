@@ -1,0 +1,22 @@
+#dynamic 0x800000
+'---------------
+#org 0x161131
+trainerbattle 0x0 0x193 0x0 @msg_before @msg_onLoseFight
+msgbox @msg_default MSG_NORMAL '"You showed me just how good\nI was..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x174C30
+= Well! It's about time that you got\nhere. I've been waiting for this.\pI have one question: you wanna\nhave a bad time?\pBecause, let me just say[.]\pYou're about to have one!
+'original = I'll show you just how good you\nare. Not!
+
+#org @msg_onLoseFight '0x174C5A
+= Somewhere, someone just had a bad\ntime[.]\pAnd that someone was me!\nYou just shut me down there.
+'original = I'm furious!
+
+#org @msg_default     '0x174C67
+= Let me just say[.] I'm excited for\nMIKI to fight SANS NO-HIT already.\p[.]Wait, what? MIKI promised that?\nWho's putting words in my mouth?!
+'original = You showed me just how good\nI was[.]
