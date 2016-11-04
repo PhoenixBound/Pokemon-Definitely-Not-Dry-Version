@@ -1,0 +1,18 @@
+'---------------
+#org 0x16D65A
+trainerbattle 0x0 0x124 0x0 0x8198629 0x81986B4
+msgbox 0x81986C9 MSG_NORMAL '"So, you mix brawn with brains?\nGo..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x198629
+= Did you POO today?
+
+#org 0x1986B4
+= Fair enough.
+
+#org 0x1986C9
+= So, you mix brawn with brains?\nGood strategy!\pThat's remarkable for a child\nTRAINER.

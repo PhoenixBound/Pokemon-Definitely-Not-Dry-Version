@@ -1,0 +1,18 @@
+'---------------
+#org 0x16EF1F
+trainerbattle 0x0 0x1D0 0x0 0x819BAE8 0x819BB0D
+msgbox 0x819BB1F MSG_NORMAL '"I knew that this was going to take..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x19BAE8
+= JIMMY RUSSEL EATS MEGA BEPIS
+
+#org 0x19BB0D
+= I lost after all!
+
+#org 0x19BB1F
+= I knew that this was going to take\nplace.

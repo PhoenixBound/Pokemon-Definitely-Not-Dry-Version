@@ -1,0 +1,18 @@
+'---------------
+#org 0x16EEDA
+trainerbattle 0x0 0x11B 0x0 0x819BC57 0x819BCBC
+msgbox 0x819BCC4 MSG_NORMAL '"That's right! I used telepathy to\..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x19BC57
+= The names David! I foresee a loss\ncoming to you soon.
+
+#org 0x19BCBC
+= HUH!? My predication was wrong?!
+
+#org 0x19BCC4
+= That's right! I used telepathy to\nread your mind!

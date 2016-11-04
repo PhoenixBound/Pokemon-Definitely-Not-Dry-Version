@@ -1,0 +1,18 @@
+'---------------
+#org 0x16EEC3
+trainerbattle 0x0 0x11A 0x0 0x819BB49 0x819BBA1
+msgbox 0x819BBB3 MSG_NORMAL '"There used to be two POKÈMON GYMS\..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x19BB49
+= I've seen the future, you've\nalready lost!
+
+#org 0x19BBA1
+= Me? Wrong? HoOoOwW!?
+
+#org 0x19BBB3
+= There used to be two POKÈMON GYMS\nin SAFFRON.\pThe FIGHTING DOJO next door lost\nits GYM status, though.\pWe simply creamed them when we\ndecided to have just one GYM.

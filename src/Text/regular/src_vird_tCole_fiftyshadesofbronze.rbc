@@ -1,0 +1,18 @@
+'---------------
+#org 0x169F91
+trainerbattle 0x0 0x129 0x0 0x818F98A 0x818F9BB
+msgbox 0x818F9CC MSG_NORMAL '"Wait!\nI was just careless!"
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x18F98A
+= Damn it feels good to be an\nxWater sub!
+
+#org 0x18F9BB
+= Cause being a wet sub's just so\nmoist
+
+#org 0x18F9CC
+= Wait!\nI was just careless!

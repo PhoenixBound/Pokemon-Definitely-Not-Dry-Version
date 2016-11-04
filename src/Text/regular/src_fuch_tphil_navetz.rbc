@@ -1,0 +1,18 @@
+'---------------
+#org 0x16D5F1
+trainerbattle 0x0 0x126 0x0 0x8198866 0x81988B6
+msgbox 0x81988CB MSG_NORMAL '"You impressed me!\nHere's a hint!\..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x198866
+= I am BHOS! Me Smush. Me Crush.  ME\nAM BHOS!
+
+#org 0x1988B6
+= You smush BHOS? HOW?
+
+#org 0x1988CB
+= You impressed me!\nHere's a hint!\pLook very closely for gaps in the\ninvisible walls!

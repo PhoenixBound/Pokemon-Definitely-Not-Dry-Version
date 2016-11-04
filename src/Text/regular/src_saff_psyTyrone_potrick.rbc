@@ -1,0 +1,21 @@
+'---------------
+#org 0x16EE9F
+trainerbattle 0x0 0x119 0x0 0x819BA45 0x819BA9E
+setvar 0x8004 0x7
+setvar 0x8005 0x5
+special 0x173
+msgbox 0x819BAB4 MSG_NORMAL '"SABRINA just wiped out the KARATE\..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x19BA45
+= How you like yo eggs?
+
+#org 0x19BA9E
+= Sunny side up fool!
+
+#org 0x19BAB4
+= SABRINA just wiped out the KARATE\nMASTER next door.

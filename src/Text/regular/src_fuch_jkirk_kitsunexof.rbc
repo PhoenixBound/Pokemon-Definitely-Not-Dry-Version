@@ -1,0 +1,21 @@
+'---------------
+#org 0x16D61F
+trainerbattle 0x0 0x120 0x0 0x819871E 0x8198779
+setvar 0x8004 0x6
+setvar 0x8005 0x2
+special 0x173
+msgbox 0x8198787 MSG_NORMAL '"Even though I've lost, I will keep..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x19871E
+= [player]!\pI have a feeling this is going to\nbe fun!
+
+#org 0x198779
+= I'm done for!
+
+#org 0x198787
+= Even though I've lost, I will keep\ntraining according to the teachings\lof KOGA, my ninja master.

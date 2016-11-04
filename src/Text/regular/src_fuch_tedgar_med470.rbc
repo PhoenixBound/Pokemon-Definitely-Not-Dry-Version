@@ -1,0 +1,18 @@
+'---------------
+#org 0x16D608
+trainerbattle 0x0 0x127 0x0 0x819891F 0x819897F
+msgbox 0x8198985 MSG_NORMAL '"I still have much to learn."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x19891F
+= Sun and Moon HYPU!
+
+#org 0x19897F
+= Sun over Moon!
+
+#org 0x198985
+= I still have much to learn.

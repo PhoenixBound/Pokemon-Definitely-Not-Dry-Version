@@ -1,0 +1,18 @@
+'---------------
+#org 0x169F7A
+trainerbattle 0x0 0x128 0x0 0x818F7F3 0x818F824
+msgbox 0x818F840 MSG_NORMAL '"Do you know the identity of our\nG..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x18F7F3
+= Is slowpoke a troll song?
+
+#org 0x18F824
+= You are in perfect harmony!
+
+#org 0x18F840
+= Do you know the identity of our\nGYM LEADER?

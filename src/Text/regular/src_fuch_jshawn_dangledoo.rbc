@@ -1,0 +1,18 @@
+'---------------
+#org 0x16D643
+trainerbattle 0x0 0x121 0x0 0x81989A1 0x81989EA
+msgbox 0x8198A10 MSG_NORMAL '"Where there is light, there is\nsh..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x1989A1
+= Spread them cheeks, here comes the\nDangle!!!
+
+#org 0x1989EA
+= Looks like it's my cheeks that got\nspread!
+
+#org 0x198A10
+= Where there is light, there is\nshadow!\pLight and shadow!\nWhich do you choose?

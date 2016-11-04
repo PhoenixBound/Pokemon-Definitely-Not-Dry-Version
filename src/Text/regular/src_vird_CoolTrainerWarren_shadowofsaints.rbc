@@ -1,0 +1,18 @@
+'---------------
+#org 0x16A01B
+trainerbattle 0x0 0x191 0x0 0x818F8CB 0x818F8EE
+msgbox 0x818F8FE MSG_NORMAL '"The LEADER will scold me for\nlosi..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x18F8CB
+= Im about to take you to\nFlavortown, OHHHH YEAAAAH!
+
+#org 0x18F8EE
+= That loss left me SALTY
+
+#org 0x18F8FE
+= The LEADER will scold me for\nlosing this way[.]

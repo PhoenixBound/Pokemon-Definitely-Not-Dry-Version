@@ -1,0 +1,18 @@
+'---------------
+#org 0x169FD6
+trainerbattle 0x0 0x144 0x0 0x818F92C 0x818F95A
+msgbox 0x818F960 MSG_NORMAL '"The POKÈMON LEAGUE?\nYou? Don't ge..."
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x18F92C
+= I think there is too little water\nin this version.
+
+#org 0x18F95A
+= Now I'M soaked!
+
+#org 0x18F960
+= The POKÈMON LEAGUE?\nYou? Don't get cocky!
