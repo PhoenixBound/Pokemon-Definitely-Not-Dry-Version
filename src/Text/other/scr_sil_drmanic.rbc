@@ -1,0 +1,22 @@
+#dynamic 0x800000
+'---------------
+#org 0x161DC0
+trainerbattle 0x0 0x159 0x0 @msg_before @msg_onLoseFight
+msgbox @msg_default MSG_NORMAL '"Are you satisfied with beating me?..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x176D57
+= Anime was a mistake[.]
+'original = Enough of your silly games!
+
+#org @msg_onLoseFight '0x176D73
+= Yes! "SENPAI" will finally stop\nnoticing me!
+'original = No continues left!
+
+#org @msg_default     '0x176D86
+= What other kinds of entertainment\nare there?\pMaybe I'd like[.]video games?\nOr TWITCH streams?
+'original = Are you satisfied with beating me?\nThen go on home!

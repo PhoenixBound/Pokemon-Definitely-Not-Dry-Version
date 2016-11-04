@@ -1,0 +1,32 @@
+#dynamic 0x800000
+'---------------
+#org @start             '0x16107C
+countpokemon            'This might be overboard but it's trivial anyways. <shrug />
+compare LASTRESULT 0x1
+if 0x1 call @oneMember
+trainerbattle 0x0 0x122 0x0 @msg_before @msg_onLoseFight
+msgbox @msg_default MSG_NORMAL '"Many TRAINERS give up their\nchall..."
+end
+
+'---------------
+#org @oneMember
+trainerbattle 0x0 0x122 0x0 @msg_before @msg_onLoseFight2
+return
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x174995
+= By putting all your faith and\ntrust into your partner[.]\p[.]you can reach heights beyond all\nexpectations.
+'original = Is VICTORY ROAD too tough?
+
+#org @msg_onLoseFight '0x1749B0
+= What a great relationship you have\nwith your partners!
+'original = Well done!
+
+#org @msg_onLoseFight2 'didn't exist before
+= What a great relationship you have\nwith your partner!
+
+#org @msg_default     '0x1749BB
+= I've yet to see a stronger relat-\nionship between POKÈMON and a\lhuman as I've seen just now.
+'original = Many TRAINERS give up their\nchallenge here and go home.

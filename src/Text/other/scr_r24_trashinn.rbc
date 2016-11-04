@@ -1,0 +1,71 @@
+#include stditems.rbh
+
+#dynamic 0x800000
+'---------------
+#org 0x168620
+lock
+faceplayer
+compare 0x406B 0x1            'Are the bridge's script tiles disabled?
+if 0x1 goto 0x8168656         'If so, go to default textbox (directly below) and end execution
+msgbox @msg_start MSG_KEEPOPEN '"Congratulations! You beat our\nfiv..."
+checkitemroom ITEM_NUGGET 0x1 'Can 1 NUGGET be added?
+compare LASTRESULT 0x0        'If not...
+if 0x1 goto 0x816864C         '...then go to "no room" message and end execution
+call 0x81686B9                'add a nugget and do other cool stuff, then come back
+release
+end
+
+'---------------
+#org 0x168656
+msgbox @msg_default MSG_KEEPOPEN '"With your ability, you'd become\na..."
+release
+end
+
+'---------------
+#org 0x16864C
+msgbox @msg_wut MSG_KEEPOPEN '"You don't have any room!"
+release
+end
+
+'---------------
+#org 0x1686B9
+additem ITEM_NUGGET 0x1
+loadpointer 0x0 @msg_itemGet '"[player] received a NUGGET\nfrom t..."
+giveitem2 ITEM_NUGGET 0x1 0x101
+preparemsg @msg_beforeFight           '"By the way, how would you like to\..."
+waitmsg                               'display message above and then, while that's happening...
+playsong 0x11B 0x0                    'play "Encounter 1" song (index 283 decimal)
+waitkeypress                          'wait for a button press to continue the script
+setvar LASTTALKED 0x1                 'person 0x1 was the last person talked to
+trainerbattle 0x3 0x164 0x0 @msg_onLoseFight 'initiate battle with only losing text and continue
+msgbox @msg_default MSG_KEEPOPEN         '"With your ability, you'd become\na..."
+setvar 0x406B 0x1                     'disable script tiles after the bridge
+return
+
+
+'---------
+' Strings
+'---------
+#org @msg_start '0x188C3C
+= Cowabunga! You've got control of\nthis POOL PARTY!\pIn commemoration, take this prize.\nCha-ching!
+'original = Congratulations! You beat our\nfive contest TRAINERS!\pYou just earned a fabulous prize!
+
+#org @msg_default '0x188DF1
+= K-Kerpow[.]that was the sound of my\nbrain exploding.\pImagine what you could accomplish\nif you could have any POKÈMON!\pWouldn't you love to have that\nopportunity?
+'original = With your ability, you'd become\na top leader in TEAM ROCKET.\pCome on, think of the opportunity!\nDon't let this chance go to waste.
+
+#org @msg_wut '0x188CC2
+= [.]Wha?! How'd you fill your bag\nthat quick, kid?!
+'original = You don't have any room!
+
+#org @msg_itemGet '0x188C93
+= [player] received a NUGGET\nfrom TEAM ROCKET! [.]Wait[.]what?!
+'original = [player] received a NUGGET\nfrom the mystery TRAINER!
+
+#org @msg_beforeFight '0x188CDB
+= Hey! Keep your reactions to\nyourself, game!\pWell, I guess the secret's out\nnow[.] Not like it matters!\pWe, TEAM ROCKET, are professionals\nthat train the best POKÈMON!\pYou're pretty good at training\nPOKÈMON if you beat the challenge.\pYou wanna join?\c\h08\h05\nYeah? \c\h08\h05No? \c\h08\h05No[.]\pOkay. You know what? You've got\nwhat's coming to you.\pKachow!
+'original = By the way, how would you like to\njoin TEAM ROCKET?\pWe're a group of professional\ncriminals specializing in POKÈMON!\pWant to join?\pAre you sure?\pCome on, join us!\pI'm telling you to join!\p[.]Okay, you need convincing!\pI'll make you an offer you can't\nrefuse!
+
+#org @msg_onLoseFight '0x188DDC - The website I use for reference says this is pre-battle text, but I really doubt that.
+= Gwahhhh! How did I lose?!
+'original = Arrgh!\nYou are good!

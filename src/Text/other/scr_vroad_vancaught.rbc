@@ -1,6 +1,6 @@
 #dynamic 0x800000
 '---------------
-#org @start
+#org 0x16111A
 trainerbattle 0x0 0x18A 0x0 @before @after
 msgbox @default MSG_NORMAL '"All TRAINERS here are headed to\nt..."
 end
@@ -9,11 +9,14 @@ end
 '---------
 ' Strings
 '---------
-#org @before
-= I'll rek u, m8! Prepare for A DEAD\nBATTLE!!!  'I'm on the fence about the "dead battle" part...
+#org @before  '0x174C8A
+= I'll rek u, m8!\nPrepare for A DEAD BATTLE!!!  'I'm on the fence about the "dead battle" part...
+'original = Only the chosen can pass here!
 
-#org @after
+#org @after   '0x174CA9
 = Come on, you're killing me here!
+'original = I don't believe it!
 
-#org @default
+#org @default '0x174CBD
 = You rekt me m8, but you were too\nslow. 2/10 horrible speedrun
+'original = All TRAINERS here are headed to\nthe POKÈMON LEAGUE.\pDon't let down your guard.

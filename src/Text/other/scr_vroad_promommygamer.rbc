@@ -1,6 +1,6 @@
 #dynamic 0x800000
 '---------------
-#org @start
+#org 0x161148
 trainerbattle 0x0 0x194 0x0 @before @after
 msgbox @default MSG_NORMAL '"By fighting tough battles, you get..."
 end
@@ -9,11 +9,14 @@ end
 '---------
 ' Strings
 '---------
-#org @before
+#org @before  '0x174BCA
 = Pssh! You think you can walk in\nfront of me without a battle?\lThink again!
+'original = TRAINERS live to seek stronger\nopponents.
 
-#org @after
+#org @after   '0x174BF4
 = [.]NO!! RAICHUUU!!! How COULD you?!
+'original = Oh!\nSo strong!
 
-#org @default
+#org @default '0x174C03
 = [player], you[.]\pYou MONSTER!!! \hF9\hFB
+'original = By fighting tough battles, you get\nstronger.

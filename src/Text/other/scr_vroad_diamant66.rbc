@@ -1,0 +1,22 @@
+#dynamic 0x800000
+'---------------
+#org 0x161037
+trainerbattle 0x0 0xA7 0x0 @msg_before @msg_onLoseFight
+msgbox @msg_default MSG_NORMAL '"I can beat you when it comes to\nk..."
+end
+
+
+'---------
+' Strings
+'---------
+#org @msg_before      '0x1747EF
+= H0i[.]\nIs this fight 2 hot 5 you? (Kappa)
+'original = If you can get through here,\nyou can go meet the ELITE FOUR.
+
+#org @msg_onLoseFight '0x17482C
+= YATTA! \hF9\hF6
+'original = No!\nUnbelievable!
+
+#org @msg_default     '0x17483E
+= It's refreshing to see a TRAINER\nthat survives my METAPOD.
+'original = I can beat you when it comes to\nknowledge about POKÈMON!
