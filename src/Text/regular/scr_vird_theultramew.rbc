@@ -157,8 +157,7 @@ end
 'original = Ha!\nThat was a truly intense fight.\lYou have won!\pAs proof, here is the EARTHBADGE!\n\c\h17\c\h0BÇÀ\c\h08\n\c\h08[Ke]\c\h18
 
 #org @msg_default '0x18F4A2
-= Well, since someone else is\nsuperior over me[.]\p[.]there's no way TEAM ROCKET would\naccept me in our ISP conquest.\pI'll be out having a NESSIE PARTY\nsomewhere with a few friends.\l
-\lYou wanna see a magic trick? Just\lclose your eyes for a second!
+= Well, since someone else is\nsuperior over me[.]\p[.]there's no way TEAM ROCKET would\naccept me in our ISP conquest.\pI'll be having a NESSIE PARTY with\nfriends from stream.\pAnyways, you wanna see a magic\ntrick? Just close your eyes, and[.]
 'original = Having lost in this fashion, \nI can't face my followers.\lI have betrayed their trust.\pAs of today, TEAM ROCKET is\nfinished forever!\pAs for myself, I shall dedicate\nmy life to training again.\pLet us meet again someday!\nFarewell!
 
 #org @msg_earthbadge '0x18F586

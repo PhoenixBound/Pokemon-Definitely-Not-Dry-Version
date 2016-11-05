@@ -10,9 +10,8 @@ end
 ' Strings
 '---------
 #org @msg_before  '0x177628
-= HO-OH is a POKÈMON[.]AND the\nchemical 
-formula for hydrogen\lperoxide!
-'original = My mentor once lived here.
+= HO-OH is a POKÈMON[.]AND the\nchemical formula for hydrogen\lperoxide!
+'original = My mentor once lived here
 
 #org @msg_onLoseFight   '0x177643
 = That's some intense chemistry you\nand your POKÈMON have!
