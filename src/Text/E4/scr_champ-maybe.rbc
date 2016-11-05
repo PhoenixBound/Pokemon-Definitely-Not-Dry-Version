@@ -1,0 +1,265 @@
+''''''''''''''''
+'Welcome to madness. I'm not sure if this is quite the right offset, but it's more
+'than I got out of AdvanceMap's offset (just some spriteface command and it ends).
+'Good luck! (Kappa)
+'WARNING: you probably don't want to change this first offset, as I'm pretty sure
+'it's a continuation of 0x162B67.
+'''''''''''''''''
+'---------------
+#org 0x162B6C
+nop1
+warp4 0x0 0x0 0x76 0x162B 0x8
+nop
+lockall
+textcolor 0x0
+setflag 0x2
+applymovement MOVE_PLAYER 0x8162D07
+waitmovement 0x0
+pause 0x14
+checkflag 0x82C
+if 0x0 call 0x8162CB3
+checkflag 0x82C
+if 0x1 call 0x8162CBC
+special 0x187
+compare LASTRESULT 0x2
+if 0x1 goto 0x8162C68
+setflag 0x3
+setflag 0x5
+playsong2 0x138
+checkflag 0x844
+if 0x0 call 0x8162C6F
+checkflag 0x844
+if 0x1 call 0x8162C91
+setflag 0x4
+clearflag 0x5
+setflag 0x4BC
+setflag 0x4
+msgbox 0x8178F2F MSG_KEEPOPEN '"Why?\nWhy did I lose?\pI never mad..."
+playsong 0x159 0x0
+showsprite 0x2
+msgbox 0x8178FC6 MSG_KEEPOPEN '"OAK: [player]!"
+closeonkeypress
+applymovement MOVE_PLAYER 0x8162D1F
+applymovement 0x1 0x8162D41
+applymovement 0x2 0x8162D2A
+waitmovement 0x0
+pause 0x19
+special2 LASTRESULT 0x162
+bufferpokemon 0x0 LASTRESULT
+msgbox 0x8178FCF MSG_KEEPOPEN '"OAK: So, you've won!\nSincerely, c..."
+applymovement 0x2 0x81A75EB
+applymovement 0x1 0x81A75E7
+waitmovement 0x0
+msgbox 0x817908F MSG_KEEPOPEN '"OAK: [rival][.]\nI'm disappointed ..."
+closeonkeypress
+applymovement 0x2 0x81A75ED
+waitmovement 0x0
+pause 0x14
+msgbox 0x81791A3 MSG_KEEPOPEN '"OAK: [player].\pYou understand tha..."
+closeonkeypress
+pause 0xD
+applymovement 0x2 0x8162D37
+applymovement MOVE_PLAYER 0x8162D12
+waitmovement 0x0
+setvar 0x4001 0x1
+warp 0x1 0x50 0xFF 0x5 0xC
+waitstate
+releaseall
+end
+
+'---------------
+#org 0x162CB3
+msgbox 0x8178B6C MSG_KEEPOPEN '"[rival]: Hey, [player]!\pI was loo..."
+return
+
+'---------------
+#org 0x162CBC
+msgbox 0x8178CD4 MSG_KEEPOPEN '"[rival]: Hey, [player]!\pYou came ..."
+return
+
+'---------------
+#org 0x162C68
+call 0x8162B57
+releaseall
+end
+
+'---------------
+#org 0x162C6F
+compare 0x4031 0x2
+if 0x1 call 0x8162CC5
+compare 0x4031 0x1
+if 0x1 call 0x8162CD0
+compare 0x4031 0x0
+if 0x1 call 0x8162CDB
+return
+
+'---------------
+#org 0x162C91
+compare 0x4031 0x2
+if 0x1 call 0x8162CE6
+compare 0x4031 0x1
+if 0x1 call 0x8162CF1
+compare 0x4031 0x0
+if 0x1 call 0x8162CFC
+return
+
+'---------------
+#org 0x162B57
+setvar 0x4001 0x1
+return
+
+'---------------
+#org 0x162CC5
+trainerbattle 0x3 0x1B6 0x0 0x8178E3F
+return
+
+'---------------
+#org 0x162CD0
+trainerbattle 0x3 0x1B7 0x0 0x8178E3F
+return
+
+'---------------
+#org 0x162CDB
+trainerbattle 0x3 0x1B8 0x0 0x8178E3F
+return
+
+'---------------
+#org 0x162CE6
+trainerbattle 0x3 0x2E3 0x0 0x8178E3F
+return
+
+'---------------
+#org 0x162CF1
+trainerbattle 0x3 0x2E4 0x0 0x8178E3F
+return
+
+'---------------
+#org 0x162CFC
+trainerbattle 0x3 0x2E5 0x0 0x8178E3F
+return
+
+
+'---------
+' Strings
+'---------
+#org 0x178F2F
+= = BUTTS.  BUTTS BUTTS BUTTS BUTTS\nBUTTS BUTTS BUTTS BUTTS BUTTS\lBUTTS BUTTS BUTTS.  YOU'RE BUTTS.[.]
+
+#org 0x178FC6
+= OAK: [player]!
+
+#org 0x178FCF
+= OAK: So, you've won!\nSincerely, congratulations!\pYou're the new POKÈMON LEAGUE\nCHAMPION!\pYou've grown up so much since you\nfirst left with [buffer1] to work\lon the POKÈDEX.\p[player], you have come of age!
+
+#org 0x17908F
+= OAK: [rival][.]\nI'm disappointed in you.\pI came when I heard you'd become\nthe WETTEST.\pBut, when I got here, you had\nalready lost!\p[rival], do you understand why\nyou lost?\pYou have forgotten to treat your\nPOKÈMON with love and trust.\pWithout them, you will never\nbecome a CHAMP again!
+
+#org 0x1791A3
+= OAK: [player].\pYou understand that your victory\nwas not just your own doing.\pThe bond you share with your\nPOKÈMON is marvelous.\p[player]!\nCome with me!
+
+#org 0x178B6C
+= [rival]: Hey, [player]!\pI was looking forward to seeing\nyou, [player].\pI hope you become the very best.\nLike no one ever was.  To catch\lthem may be a good test, but to\ltrain them should be your cause
+
+#org 0x178CD4
+= [rival]: Hey, [player]!\pYou came back, [player]!\nHahah, that is so great!\pI hope you become the very best.\nLike no one ever was.  To catch\lthem may be a good test, but to\ltrain them should be your cause
+
+#org 0x178E3F
+= It was brief, but it was nice to\nbe chief.  You did it.\pGrats [player]
+
+
+
+'-----------
+' Movements
+'-----------
+#org 0x162D07
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0xFE 'End of Movements
+
+#org 0x162D1F
+#raw 0x1B 'Delay4
+#raw 0x2D 'Face Down (Delayed)
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x2F 'Face Left (Delayed)
+#raw 0xFE 'End of Movements
+
+#org 0x162D41
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x2F 'Face Left (Delayed)
+#raw 0xFE 'End of Movements
+
+#org 0x162D2A
+#raw 0x1C 'Delay5
+#raw 0x1C 'Delay5
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x12 'Step Left (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x2D 'Face Down (Delayed)
+#raw 0x1C 'Delay5
+#raw 0xFE 'End of Movements
+
+#org 0x1A75EB
+#raw 0x30 'Face Right (Delayed)
+#raw 0xFE 'End of Movements
+
+#org 0x1A75E7
+#raw 0x2F 'Face Left (Delayed)
+#raw 0xFE 'End of Movements
+
+#org 0x1A75ED
+#raw 0x2D 'Face Down (Delayed)
+#raw 0xFE 'End of Movements
+
+#org 0x162D37
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x13 'Step Right (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x1B 'Delay4
+#raw 0x60 'Hide
+#raw 0xFE 'End of Movements
+
+#org 0x162D12
+#raw 0x1C 'Delay5
+#raw 0x12 'Step Left (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x13 'Step Right (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x11 'Step Up (Normal)
+#raw 0x1B 'Delay4
+#raw 0x60 'Hide
+#raw 0xFE 'End of Movements

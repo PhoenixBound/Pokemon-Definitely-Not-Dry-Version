@@ -1,0 +1,167 @@
+#include stditems.rbh
+
+'---------------
+#org 0x16EDD8
+setvar 0x8004 0x7
+setvar 0x8005 0x2
+special 0x174
+trainerbattle 0x1 0x1A4 0x0 0x819B53C 0x819B602 0x816EE0A
+checkflag 0x29A
+if 0x0 goto 0x816EE3D
+msgbox 0x819B7F2 MSG_KEEPOPEN '"TM04 is CALM MIND.\pIt makes the P..."
+release
+end
+
+'---------------
+#org 0x16EE0A
+setvar 0x8004 0x7
+setvar 0x8005 0x2
+special 0x173
+setvar 0x8004 0x7
+setvar 0x8005 0x3
+special 0x173
+clearflag 0xAE
+setflag 0x4B5
+setflag 0x825
+setvar 0x8008 0x6
+call 0x81A6B18
+goto 0x816EE3D
+
+'---------------
+#org 0x16EE3D
+msgbox 0x819B6FA MSG_KEEPOPEN '"The MARSHBADGE makes POKÈMON up\nt..."
+checkitemroom ITEM_TM04 0x1
+compare LASTRESULT 0x0
+if 0x1 goto 0x816EE7E
+additem ITEM_TM04 0x1
+loadpointer 0x0 0x819B7D3 '"[player] received TM04 from\nSABRI..."
+giveitem2 ITEM_TM04 0x1 0x101
+setflag 0x29A
+msgbox 0x819B685 MSG_KEEPOPEN '"Psychic power isn't something that..."
+release
+end
+
+'---------------
+#org 0x1A6B18
+copyvar 0x8000 0x8008
+compare 0x8000 0x1
+if 0x1 goto 0x81A6B76
+compare 0x8000 0x2
+if 0x1 goto 0x81A6B7A
+compare 0x8000 0x3
+if 0x1 goto 0x81A6B81
+compare 0x8000 0x4
+if 0x1 goto 0x81A6B8B
+compare 0x8000 0x5
+if 0x1 goto 0x81A6BA1
+compare 0x8000 0x6
+if 0x1 goto 0x81A6BB4
+compare 0x8000 0x7
+if 0x1 goto 0x81A6BCA
+compare 0x8000 0x8
+if 0x1 goto 0x81A6BE0
+end
+
+'---------------
+#org 0x16EE7E
+msgbox 0x819B849 MSG_KEEPOPEN '"Your BAG is full of other items."
+release
+end
+
+'---------------
+#org 0x1A6B76
+cleartrainerflag 0x8E
+return
+
+'---------------
+#org 0x1A6B7A
+cleartrainerflag 0x96
+cleartrainerflag 0xEA
+return
+
+'---------------
+#org 0x1A6B81
+cleartrainerflag 0x8D
+cleartrainerflag 0xDC
+cleartrainerflag 0x1A7
+return
+
+'---------------
+#org 0x1A6B8B
+cleartrainerflag 0x84
+cleartrainerflag 0x85
+cleartrainerflag 0xA0
+cleartrainerflag 0x109
+cleartrainerflag 0x10A
+cleartrainerflag 0x10B
+cleartrainerflag 0x192
+return
+
+'---------------
+#org 0x1A6BA1
+cleartrainerflag 0x126
+cleartrainerflag 0x127
+cleartrainerflag 0x120
+cleartrainerflag 0x121
+cleartrainerflag 0x124
+cleartrainerflag 0x125
+return
+
+'---------------
+#org 0x1A6BB4
+cleartrainerflag 0x118
+cleartrainerflag 0x119
+cleartrainerflag 0x11A
+cleartrainerflag 0x11B
+cleartrainerflag 0x1CE
+cleartrainerflag 0x1CF
+cleartrainerflag 0x1D0
+return
+
+'---------------
+#org 0x1A6BCA
+cleartrainerflag 0xB1
+cleartrainerflag 0xB2
+cleartrainerflag 0xB3
+cleartrainerflag 0xB4
+cleartrainerflag 0xD5
+cleartrainerflag 0xD6
+cleartrainerflag 0xD7
+return
+
+'---------------
+#org 0x1A6BE0
+cleartrainerflag 0x128
+cleartrainerflag 0x129
+cleartrainerflag 0x142
+cleartrainerflag 0x143
+cleartrainerflag 0x144
+cleartrainerflag 0x188
+cleartrainerflag 0x190
+cleartrainerflag 0x191
+return
+
+
+'---------
+' Strings
+'---------
+#org 0x19B53C
+= Hoi, sorry to say this but you've\nactivated my TRAP CARD! Now go,\lAUGUMON!\c\h0B[Ke]¿
+
+#org 0x19B602
+= This loss shocks me!\nBut, a loss is a loss.\pI admit, I didn't work hard enough\nto win.\pYour victory has earned you the\nMARSHBADGE.
+
+#org 0x19B7F2
+= TM04 is CALM MIND.\pIt makes the POKÈMON concentrate\nto raise both SP. ATK and SP. DEF.
+
+#org 0x19B6FA
+= The MARSHBADGE makes POKÈMON up\nto Lv. 70 obey you.\pStronger POKÈMON will become wild,\nignoring your orders in battle.\pJust don't raise your POKÈMON too\nmuch to avoid that problem.\pWait, please take this TM with you.
+
+#org 0x19B7D3
+= [player] received TM04 from\nSABRINA.
+
+#org 0x19B685
+= Psychic power isn't something that\nonly a few people have.\pEveryone has psychic power.\nPeople just don't realize it.
+
+#org 0x19B849
+= Your BAG is full of other items.
