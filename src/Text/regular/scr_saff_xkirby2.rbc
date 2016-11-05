@@ -1,6 +1,6 @@
 #dynamic 0x800000
 '---------------
-#org @start
+#org 0x16EE88
 trainerbattle 0x0 0x118 0x0 @before @after
 msgbox @default MSG_NORMAL '"PSYCHIC POKÈMON fear only ghosts\n..."
 end
