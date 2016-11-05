@@ -4,7 +4,7 @@
 checkgender
 compare LASTRESULT 0x1
 if 0x1 goto @altTrainer
-trainerbattle 0x0 0x12A 0x0 0x8174942 0x817495A
+trainerbattle 0x0 0x12A 0x0 @msg_before @msg_onLoseFight
 msgbox 0x8174969 MSG_NORMAL '"You earned the right to be on\nVIC..."
 end
 
