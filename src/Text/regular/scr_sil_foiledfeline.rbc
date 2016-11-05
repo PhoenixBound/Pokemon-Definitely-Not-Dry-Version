@@ -1,0 +1,99 @@
+#dynamic 0x800000
+'---------------
+'---- #org 0x161E88  'entrypoint for left tile (zero)
+'---- lockall
+'---- setvar 0x4001 0x0
+'---- goto 0x8161EA0
+
+'---------------
+'---- #org 0x161E94  'entrypoint for right tile (one)
+'---- lockall
+'---- setvar 0x4001 0x1
+'---- goto 0x8161EA0
+
+'---------------
+#org 0x161EA0                 'the meaty part (PogChamp)
+textcolor 0x0                 'Giovanni is a dude
+applymovement 0x3 0x81A75ED   'have giovanni face down
+waitmovement 0x0              'and after he's done facing down...
+pause 0x19                    'wait for a little less than a second
+msgbox @msg_before MSG_KEEPOPEN '"Ah, [player]!\nSo we meet again!\p..."
+closeonkeypress               'close the msgbox
+compare 0x4001 0x0            'was player on the left tile?
+if 0x1 call 0x8161F00         'if so, have GIOVANNI and PLAYER get next to each other and face each other
+compare 0x4001 0x1            'but was player on the right tile?
+if 0x1 call 0x8161F12         'if so, have GIOVANNI stay on top and look boring
+setvar LASTTALKED 0x3                  'giovanni was last person talked to
+trainerbattle 0x3 0x15D 0x0 @msg_onLoseFight 'begin a trainerbattle with only defeat text
+msgbox @msg_beforeLeave MSG_KEEPOPEN '"Blast it all!\nYou ruined our plan..."
+closeonkeypress               'close msgbox
+fadescreen 0x1                'fade to black
+hidesprite 0x3                'make GIOVANNI disappear
+hidesprite 0x4                'and the grunt in the other hallway
+hidesprite 0x6                'and the grunt in this hallway
+fadescreen 0x0                'fade back in from black
+setvar 0x4060 0x1             'TEAM ROCKET has now left SILPH CO (some scripts disabled)
+setflag 0x3E                  'Saffron Rocket members will disappear now
+clearflag 0x3F                'Saffron gate civilians show up (?)
+releaseall                    'it's over
+end
+
+'---------------
+'---- #org 0x161F00
+'---- applymovement 0x3 0x8161F1D
+'---- applymovement MOVE_PLAYER 0x8161F27
+'---- waitmovement 0x0
+'---- return
+
+'---------------
+'---- #org 0x161F12
+'---- applymovement 0x3 0x8161F23
+'---- waitmovement 0x0
+'---- return
+
+
+'---------
+' Strings
+'---------
+#org @msg_before '0x177108
+= Hiiiii [player]!!!\pOh, wait, I'm a bad guy[.]um[.]\pHey, [player]!\nYou need to git gud.
+'original = Ah, [player]!\nSo we meet again!\pThe PRESIDENT and I are discussing\na vital business proposition.\pKeep your nose out of grown-up\nmatters[.]\pOr, experience a world of pain!
+
+#org @msg_onLoseFight '0x1771AB
+= Well, you know what they say[.]\nNoobs get rekt[.]
+'original = Arrgh!!\nI lost again!?
+
+#org @msg_beforeLeave '0x1771C2
+= Look, you've got a lot of guts\ntrying to ruin TEAM ROCKET's plan.\pWell, let me tell you[.]TEAM ROCKET\nwill have all the POKÈMON.\pAnd all the world's ISPs will be\nat our mercy!\pWe will meet again.
+'original = Blast it all!\nYou ruined our plans for SILPH!\pBut, TEAM ROCKET will never fall!\p[player]! Never forget that all\nPOKÈMON exist for TEAM ROCKET!\pI must go, but I shall return!
+
+
+'-----------
+' Movements
+'-----------
+'---- #org 0x1A75ED
+'---- #raw 0x2D 'Face Down (Delayed)
+'---- #raw 0xFE 'End of Movements
+
+'---- #org 0x161F1D
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x2F 'Face Left (Delayed)
+'---- #raw 0xFE 'End of Movements
+
+'---- #org 0x161F27
+'---- #raw 0x1C 'Delay5
+'---- #raw 0x1C 'Delay5
+'---- #raw 0x1C 'Delay5
+'---- #raw 0x1B 'Delay4
+'---- #raw 0x1A 'Delay3
+'---- #raw 0x30 'Face Right (Delayed)
+'---- #raw 0xFE 'End of Movements
+
+'---- #org 0x161F23
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0x10 'Step Down (Normal)
+'---- #raw 0xFE 'End of Movements
