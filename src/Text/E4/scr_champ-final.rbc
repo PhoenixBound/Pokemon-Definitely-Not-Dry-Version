@@ -143,7 +143,7 @@ return
 ' Strings
 '---------
 #org 0x178F2F
-= Why?\nWhy did I lose?\pI never made any mistakes raising\nmy POKÈMON[.]\pDarn it! You're the new POKÈMON\nLEAGUE CHAMPION!\pAlthough I don't like to admit it[.]
+= = BUTTS.  BUTTS BUTTS BUTTS BUTTS\nBUTTS BUTTS BUTTS BUTTS BUTTS\lBUTTS BUTTS BUTTS.  YOU'RE BUTTS.[.]
 
 #org 0x178FC6
 = OAK: [player]!
@@ -152,19 +152,20 @@ return
 = OAK: So, you've won!\nSincerely, congratulations!\pYou're the new POKÈMON LEAGUE\nCHAMPION!\pYou've grown up so much since you\nfirst left with [buffer1] to work\lon the POKÈDEX.\p[player], you have come of age!
 
 #org 0x17908F
-= OAK: [rival][.]\nI'm disappointed in you.\pI came when I heard you'd beaten\nthe ELITE FOUR.\pBut, when I got here, you had\nalready lost!\p[rival], do you understand why\nyou lost?\pYou have forgotten to treat your\nPOKÈMON with love and trust.\pWithout them, you will never\nbecome a CHAMP again!
+= OAK: [rival][.]\nI'm disappointed in you.\pI came when I heard you'd become\nthe WETTEST.\pBut, when I got here, you had\nalready lost!\p[rival], do you understand why\nyou lost?\pYou have forgotten to treat your\nPOKÈMON with love and trust.\pWithout them, you will never\nbecome a CHAMP again!
 
 #org 0x1791A3
 = OAK: [player].\pYou understand that your victory\nwas not just your own doing.\pThe bond you share with your\nPOKÈMON is marvelous.\p[player]!\nCome with me!
 
 #org 0x178B6C
-= [rival]: Hey, [player]!\pI was looking forward to seeing\nyou, [player].\pMy rival should be strong to keep\nme sharp.\pWhile working on my POKÈDEX, I\nlooked all over for POKÈMON.\pNot only that, I assembled teams\nthat would beat any POKÈMON type.\pAnd now[.]\pI'm the POKÈMON LEAGUE CHAMPION!\p[player]!\nDo you know what that means?\pI'll tell you.\pI am the most powerful TRAINER in\nthe world!
+= [rival]: Hey, [player]!\pI was looking forward to seeing\nyou, [player].\pI hope you become the very best.\nLike no one ever was.  To catch\lthem may be a good test, but to\ltrain them should be your cause
 
 #org 0x178CD4
-= [rival]: Hey, [player]!\pYou came back, [player]!\nHahah, that is so great!\pMy rival should be strong to keep\nme sharp.\pWhile working on my POKÈDEX, I\nlooked all over for POKÈMON.\pNot only that, I assembled teams\nthat would beat any POKÈMON type.\pAnd now[.]\pI'm the POKÈMON LEAGUE CHAMPION!\p[player]!\nDo you know what that means?\pI'll tell you.\pI am the most powerful TRAINER in\nthe world!
+= [rival]: Hey, [player]!\pYou came back, [player]!\nHahah, that is so great!\pI hope you become the very best.\nLike no one ever was.  To catch\lthem may be a good test, but to\ltrain them should be your cause
 
 #org 0x178E3F
-= NO!\nThat can't be!\lYou beat me at my best!\pAfter all that work to become\nthe LEAGUE CHAMP?\pMy reign is over already?\nIt's not fair!
+= It was brief, but it was nice to\nbe chief.  You did it.\pGrats [player]
+
 
 
 '-----------

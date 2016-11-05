@@ -1,0 +1,38 @@
+'---------------
+#org 0x161317
+lock
+faceplayer
+setvar 0x8004 0xF
+setvar 0x8005 0x0
+special 0x173
+preparemsg 0x8175226 '"So! I must say, I am impressed you..."
+waitmsg
+playsong 0x11B 0x0
+waitkeypress
+trainerbattle 0x3 0x15C 0x0 0x8175318
+msgbox 0x817532D MSG_KEEPOPEN '"I see that you raise POKÈMON with\..."
+fadescreen 0x1
+closeonkeypress
+hidesprite 0x1
+showsprite 0x2
+clearflag 0x37
+setflag 0x5F
+setvar 0x8004 0xF
+setvar 0x8005 0x2
+special 0x174
+fadescreen 0x0
+release
+end
+
+
+'---------
+' Strings
+'---------
+#org 0x175226
+= So! I must say, I am impressed you\ngot here. TEAM ROCKET messes with\lisp's from around the world. We\lsolely do this to get the\lcomputer focussed youth outside.\lI won't let you erode our mission\lyoung one.
+
+#org 0x175318
+= WHAT!\nThis can't be!
+
+#org 0x17532D
+= don't you think it's over child,\nwe have already completely\linfiltrated your Isp. We will\lmeet again....
