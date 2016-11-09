@@ -1,9 +1,6 @@
 #dynamic 0x800000
 '---------------
-#org @start             '0x16107C
-countpokemon            'This might be overboard but it's trivial anyways. <shrug />
-compare LASTRESULT 0x1
-if 0x1 goto @oneMember
+#org 0x16107C
 trainerbattle 0x0 0x122 0x0 @msg_before @msg_onLoseFight
 msgbox @msg_default MSG_NORMAL '"Many TRAINERS give up their\nchall..."
 end
@@ -22,12 +19,9 @@ end
 'original = Is VICTORY ROAD too tough?
 
 #org @msg_onLoseFight '0x1749B0
-= What a great relationship you have\nwith your partners!
+= What a great relationship a\nPOKÈMON can have with its master!
 'original = Well done!
 
-#org @msg_onLoseFight2 'didn't exist before
-= What a great relationship you have\nwith your partner!
-
 #org @msg_default     '0x1749BB
-= I've yet to see a stronger relat-\nionship between POKÈMON and a\lhuman as I've seen just now.
+= I've yet to see a stronger\nrelationship between POKÈMON and\lTRAINER than I've seen just now.
 'original = Many TRAINERS give up their\nchallenge here and go home.

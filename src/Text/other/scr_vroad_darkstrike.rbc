@@ -1,17 +1,20 @@
 #dynamic 0x800000
 '---------------
-#org @start          '0x161093
+#org 0x161093
+trainerbattle 0x0 0x12A 0x0 @msg_before @msg_onLoseFight
+goto @chooseDefaultDialogue
+
+'---------------
+#org @chooseDefaultDialogue
 checkgender
 compare LASTRESULT 0x1
-if 0x1 goto @altTrainer
-trainerbattle 0x0 0x12A 0x0 @msg_before @msg_onLoseFight
-msgbox 0x8174969 MSG_NORMAL '"You earned the right to be on\nVIC..."
+if 0x1 goto @defaultFemale
+msgbox @msg_default MSG_NORMAL '"You earned the right to be on\nVIC..."
 end
 
 '---------------
-#org @altTrainer
-trainerbattle 0x0 0x12A 0x0 @msg_beforeAlt @msg_onLoseFight
-msgbox @msg_default MSG_NORMAL
+#org @defaultFemale
+msgbox @msg_defaultFemale MSG_NORMAL
 end
 
 '---------
@@ -29,5 +32,5 @@ end
 = I was sitting here looking for\npeople to battle[.]\pAnd I heard the sound of a girl's\nvoice talking about bad times.\pAnd the words "NO-HIT SANS." I'm\nconfused, what does that mean?
 'original = You earned the right to be on\nVICTORY ROAD[.]
 
-#org @msg_beforeAlt   'nonexistent
-= You're in for a bad time, sister.
+#org @msg_defaultFemale 'nonexistent
+= Wait a second[.]you seem like more\nof a sis than a bro[.]\pMaybe you're the girl I heard\ntalking about bad times?\pCould you tell me what "NO-HIT\nSANS" means?
