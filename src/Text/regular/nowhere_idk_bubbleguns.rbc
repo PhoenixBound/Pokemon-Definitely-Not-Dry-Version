@@ -16,7 +16,7 @@ if 0x1 goto @punishment
 msgbox @okay 0x2
 loadpointer 0x0 @msg_giveItem
 additem ITEM_MAXPOTION 0x1
-giveitem2 ITEM_MAXPOTION 0x1 0x10C
+giveitem2 ITEM_MAXPOTION 0x1 0x10F
 setflag 0x200
 goto @default
 
@@ -33,7 +33,7 @@ msgbox @msg_default 0x2
 end
 
 #org @msg_start
-= Hey, [player]!\nIt's me, BUBBLEGUNS209!\pRemember me? I'm that dude that\nreplaced ZANE once in WET 2.\pI thought you might need some\nhelp[.]so I found this for you!\pYou want it?
+= Hey, [player]!\nIt's me, BUBBLEGUNS209!\pRemember me? I'm that dude that\nreplaced ZANE once in WET 2.\pI thought you might need some\nhelp[.]so I hacked this for you!\pYou want it?
 
 #org @msg_noGive
 = Oh[.]I see.\pIt's a pretty overpowered item, so\nI understand.
@@ -42,7 +42,7 @@ end
 = [player] got a MAX\nPOTION. Cheater.
 
 #org @msg_default
-= J seems a bit hostile right now[.]\nI have some more, but I'll keep it\lfor your sake.
+= J seems a bit hostile right now[.]\nI have some more, but I'll keep\lthem for your sake.
 
 #org @msg_www
 = Hey! How's a BUBBLEGUNS supposed\nto give you the best item in the\lgame if you don't have room?\pWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\lWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\lWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW!\pWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\lWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\lWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\lWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\lWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW!\p[.]\pWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\lWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW!\pThat is all.

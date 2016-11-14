@@ -63,10 +63,10 @@ end
 '---- end
 
 '---------------
-#org 0x16A634
-msgbox 0x81911CE MSG_KEEPOPEN '"You don't have room for this."
-release
-end
+'---- #org 0x16A634
+'---- msgbox 0x81911CE MSG_KEEPOPEN '"You don't have room for this."
+'---- release
+'---- end
 
 '---------------
 '---- #org 0x1A6B76
