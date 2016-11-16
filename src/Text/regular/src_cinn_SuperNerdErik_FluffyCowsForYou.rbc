@@ -1,18 +1,42 @@
+#dynamic 0x800000
 '---------------
 #org 0x16DA7F
 trainerbattle 0x0 0xB1 0x0 0x81997A5 0x81997D6
-msgbox 0x81997EA MSG_NORMAL '"Fire, or to be more precise,\ncomb..."
+call @chooseDefaultDialogue  'call is smaller than the original's msgbox, so this is safe.
 end
 
+'---------------
+#org @chooseDefaultDialogue
+checkgender
+if 0x0 call @defaultBoy
+checkgender
+if 0x1 call @defaultGirl
+return
+
+'---------------
+#org @defaultBoy
+msgbox @msg_defaultBoy MSG_NORMAL
+return
+
+'---------------
+#org @defaultGirl
+msgbox @msg_defaultGirl MSG_NORMAL
+return
 
 '---------
 ' Strings
 '---------
-#org 0x1997A5
+#org @msg_before '0x1997A5
 = LOLHOPELOLHOPELOLHOPE. I'm gonna\ncut off your dingleberry son.
+'original = Do you know how hot POKÈMON fire\nbreath can get?
 
-#org 0x1997D6
+#org @msg_onLoseFight '0x1997D6
 = Keep your dingleberry this day.
+'original = Yow!\nHot, hot, hot!
 
-#org 0x1997EA
-= Fire, or to be more precise,\ncombustion[.]\p[.]Oxygen in the air[.]\nBlah, blah, blah, blah[.]
+#org @msg_defaultBoy '0x1997EA
+= Someone'll get your dingleberry.\nSomeone, some day!
+'original = Fire, or to be more precise,\ncombustion[.]\p[.]Oxygen in the air[.]\nBlah, blah, blah, blah[.]
+
+#org @msg_defaultGirl 'nonexistent
+= Wait a second[.]\nYou[.]\pYou don't have a dingleberry, do\nyou?\pDingity dang it[.]! I was doomed to\nlose from the start?!

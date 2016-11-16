@@ -1,50 +1,52 @@
 '---------------
 #org 0x16DA96
-trainerbattle 0x2 0xB2 0x0 0x81998BD 0x81998ED 0x816DAB1
+trainerbattle 0x2 0xB2 0x0 @msg_before @msg_onLoseFight 0x816DAB1
 msgbox 0x8199911 MSG_NORMAL '"My theories are too complicated\nf..."
 end
 
 '---------------
-#org 0x16DAB1
-checkflag 0x267
-if 0x0 call 0x816DABC
-release
-end
+'---- #org 0x16DAB1
+'---- checkflag 0x267
+'---- if 0x0 call 0x816DABC
+'---- release
+'---- end
 
 '---------------
-#org 0x16DABC
-call 0x816DD31
-return
+'---- #org 0x16DABC
+'---- call 0x816DD31
+'---- return
 
 '---------------
-#org 0x16DD31
-sound 0x26
-checksound
-call 0x816E157
-special 0x8E
-setflag 0x267
-return
+'---- #org 0x16DD31
+'---- sound 0x26
+'---- checksound
+'---- call 0x816E157
+'---- special 0x8E
+'---- setflag 0x267
+'---- return
 
 '---------------
-#org 0x16E157
-setmaptile 0x11 0x8 0x2C7 0x0
-setmaptile 0x12 0x8 0x2C6 0x0
-setmaptile 0x11 0x9 0x2CF 0x0
-setmaptile 0x12 0x9 0x2CE 0x0
-setmaptile 0x11 0xA 0x289 0x0
-setmaptile 0x12 0xA 0x281 0x0
-setmaptile 0x13 0xA 0x282 0x0
-return
+'---- #org 0x16E157
+'---- setmaptile 0x11 0x8 0x2C7 0x0
+'---- setmaptile 0x12 0x8 0x2C6 0x0
+'---- setmaptile 0x11 0x9 0x2CF 0x0
+'---- setmaptile 0x12 0x9 0x2CE 0x0
+'---- setmaptile 0x11 0xA 0x289 0x0
+'---- setmaptile 0x12 0xA 0x281 0x0
+'---- setmaptile 0x13 0xA 0x282 0x0
+'---- return
 
 
 '---------
 ' Strings
 '---------
-#org 0x1998BD
-= My names Cameron but peeps call\nme Habanero! Know why?
+#org @msg_before '0x1998BD
+= My name's Cameron, but peeps call\nme Habanero! Know why?
+'original = I've studied POKÈMON thoroughly.\nYou can't win!
 
-#org 0x1998ED
-= It's cause me and my PKMN are so\nHOT!
+#org @msg_onLoseFight '0x1998ED
+= It's cause me and my [PK][MN] are so\nHOT!
+'original = Waah!\nMy studies were insufficient!
 
-#org 0x199911
-= My theories are too complicated\nfor you to understand.
+'---- #org 0x199911
+'---- = My theories are too complicated\nfor you to understand.

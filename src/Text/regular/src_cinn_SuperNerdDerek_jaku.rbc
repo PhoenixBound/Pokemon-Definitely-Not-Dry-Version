@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16DAC2
-trainerbattle 0x2 0xB3 0x0 0x81999B7 0x81999DB 0x816DAEA
+trainerbattle 0x2 0xB3 0x0 @msg_before @msg_onLoseFight 0x816DAEA
 setvar 0x8004 0x8
 setvar 0x8005 0x2
 special 0x173
@@ -8,42 +9,44 @@ msgbox 0x81999DF MSG_NORMAL '"Our LEADER, BLAINE, became lost\ni..."
 end
 
 '---------------
-#org 0x16DAEA
-checkflag 0x269
-if 0x0 call 0x816DAF5
-release
-end
+'---- #org 0x16DAEA
+'---- checkflag 0x269
+'---- if 0x0 call 0x816DAF5
+'---- release
+'---- end
 
 '---------------
-#org 0x16DAF5
-call 0x816DEE6
-return
+'---- #org 0x16DAF5
+'---- call 0x816DEE6
+'---- return
 
 '---------------
-#org 0x16DEE6
-sound 0x26
-checksound
-call 0x816E1D7
-special 0x8E
-setflag 0x269
-return
+'---- #org 0x16DEE6
+'---- sound 0x26
+'---- checksound
+'---- call 0x816E1D7
+'---- special 0x8E
+'---- setflag 0x269
+'---- return
 
 '---------------
-#org 0x16E1D7
-setmaptile 0xB 0x15 0x2D1 0x1
-setmaptile 0xB 0x16 0x289 0x0
-setmaptile 0xB 0x17 0x281 0x0
-return
+'---- #org 0x16E1D7
+'---- setmaptile 0xB 0x15 0x2D1 0x1
+'---- setmaptile 0xB 0x16 0x289 0x0
+'---- setmaptile 0xB 0x17 0x281 0x0
+'---- return
 
 
 '---------
 ' Strings
 '---------
-#org 0x1999B7
+#org @msg_before '0x1999B7
 = Goomba is key?
+'original = I know why BLAINE became a\nTRAINER.
 
-#org 0x1999DB
+#org @msg_onLoseFight '0x1999DB
 = Goomba is still key.
+'original = Ow!
 
-#org 0x1999DF
-= Our LEADER, BLAINE, became lost\nin the mountains but good.\pNight fell when a fiery bird\nPOKÈMON appeared.\pIts light allowed BLAINE to find\nhis way down safely.
+'---- #org 0x1999DF
+'---- = Our LEADER, BLAINE, became lost\nin the mountains but good.\pNight fell when a fiery bird\nPOKÈMON appeared.\pIts light allowed BLAINE to find\nhis way down safely.
