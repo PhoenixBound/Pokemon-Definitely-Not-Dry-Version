@@ -150,7 +150,7 @@ end
 'original = Hah!\pI am BLAINE, the red-hot LEADER\nof CINNABAR GYM!\pMy fiery POKÈMON are all rough\nand ready with intense heat!\pThey incinerate all challengers!\pHah!\nYou better have BURN HEAL!\c\h0B[Ke]¿
 
 #org @msg_onLoseFight '0x1995FA
-= Non-wetification leads to anger,\nand anger leads to hate[.]\pAnd hate set my world on fire!\nGood job, [player]!
+= Non-wetification leads to anger,\nand anger leads to hate[.]\pAnd hate - well, not even the\nashes remain!\pYou have earned the VOLCANOBADGE.
 'original = I have burned down to nothing!\nNot even ashes remain!\pYou have earned the VOLCANOBADGE.
 
 '---- #org 0x19971D

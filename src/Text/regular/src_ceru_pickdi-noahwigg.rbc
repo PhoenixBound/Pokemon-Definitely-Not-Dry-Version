@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16AB44
-trainerbattle 0x0 0x96 0x0 0x8192481 0x81924D0
+trainerbattle 0x0 0x96 0x0 @msg_before 0x81924D0
 msgbox 0x81924E4 MSG_NORMAL '"You have to face other TRAINERS\nt..."
 end
 
@@ -8,11 +9,12 @@ end
 '---------
 ' Strings
 '---------
-#org 0x192481
+#org @msg_before '0x192481
 = Is it wet in here, or is it just\nme?
+'original = What? You?\nI'm more than good enough for you!\pMISTY won't have to be bothered.
 
-#org 0x1924D0
-= You overwhelmed me!
+'---- #org 0x1924D0
+'---- = You overwhelmed me!
 
-#org 0x1924E4
-= You have to face other TRAINERS\nto see how good you really are.
+'---- #org 0x1924E4
+'---- = You have to face other TRAINERS\nto see how good you really are.

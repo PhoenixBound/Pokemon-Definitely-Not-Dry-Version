@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16D111
-trainerbattle 0x0 0x84 0x0 0x819747C 0x81974C4
+trainerbattle 0x0 0x84 0x0 @msg_before 0x81974C4
 msgbox 0x81974D6 MSG_NORMAL '"Bleaah!\nI hope ERIKA wipes you ou..."
 end
 
@@ -8,11 +9,12 @@ end
 '---------
 ' Strings
 '---------
-#org 0x19747C
+#org @msg_before '0x19747C
 = I once did stand-up comedy with a\ntowel, he had a dry sense of\lhumour!
+'original = I should tell you about this GYM.\pOnly real ladies are allowed in\nhere!
 
-#org 0x1974C4
-= You're too rough!
+'---- #org 0x1974C4
+'---- = You're too rough!
 
-#org 0x1974D6
-= Bleaah!\nI hope ERIKA wipes you out!
+'---- #org 0x1974D6
+'---- = Bleaah!\nI hope ERIKA wipes you out!

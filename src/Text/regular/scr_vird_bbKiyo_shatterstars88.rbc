@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x169FBF
-trainerbattle 0x0 0x143 0x0 0x818F86C 0x818F899
+trainerbattle 0x0 0x143 0x0 @msg_before 0x818F899
 msgbox 0x818F8A0 MSG_NORMAL '"If my POKÈMON were as good at\nkar..."
 end
 
@@ -8,11 +9,12 @@ end
 '---------
 ' Strings
 '---------
-#org 0x18F86C
+#org @msg_before '0x18F86C
 = Do you really think you can beat\nthe Machamp Master?
+'original = Karate is the ultimate form of\nmartial arts!
 
-#org 0x18F899
-= Aiyah!
+'---- #org 0x18F899
+'---- = Aiyah!
 
-#org 0x18F8A0
-= If my POKÈMON were as good at\nkarate as I[.]
+'---- #org 0x18F8A0
+'---- = If my POKÈMON were as good at\nkarate as I[.]

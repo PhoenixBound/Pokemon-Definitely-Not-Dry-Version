@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16D1B5
-trainerbattle 0x0 0x192 0x0 0x81977E5 0x8197832
+trainerbattle 0x0 0x192 0x0 @msg_before 0x8197832
 msgbox 0x819783E MSG_NORMAL '"I didn't bring my best POKÈMON.\nW..."
 end
 
@@ -8,11 +9,12 @@ end
 '---------
 ' Strings
 '---------
-#org 0x1977E5
+#org @msg_before '0x1977E5
 = I C Dead Poeple, and all I see is\nyou! <3
+'original = Welcome to CELADON GYM!\pYou'd better not underestimate\nthe nice ladies here.
 
-#org 0x197832
-= Oh!\nBeaten!
+'---- #org 0x197832
+'---- = Oh!\nBeaten!
 
-#org 0x19783E
-= I didn't bring my best POKÈMON.\nWait until next time!
+'---- #org 0x19783E
+'---- = I didn't bring my best POKÈMON.\nWait until next time!

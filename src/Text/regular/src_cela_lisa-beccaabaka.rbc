@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16D128
-trainerbattle 0x0 0x85 0x0 0x81976C5 0x81976FF
+trainerbattle 0x0 0x85 0x0 @msg_before 0x81976FF
 setvar 0x8004 0x5
 setvar 0x8005 0x2
 special 0x173
@@ -11,11 +12,12 @@ end
 '---------
 ' Strings
 '---------
-#org 0x1976C5
+#org @msg_before '0x1976C5
 = So, I'm guessing you're waiting\nfor the free sheckels, eh?
+'original = Oh, hey!\pWe don't like BUG- or FIRE-type\nPOKÈMON in here!
 
-#org 0x1976FF
-= Oh!\nYou!
+'---- #org 0x1976FF
+'---- = Oh!\nYou!
 
-#org 0x197708
-= Our LEADER ERIKA might be quiet,\nbut she's famous around here.
+'---- #org 0x197708
+'---- = Our LEADER ERIKA might be quiet,\nbut she's famous around here.
