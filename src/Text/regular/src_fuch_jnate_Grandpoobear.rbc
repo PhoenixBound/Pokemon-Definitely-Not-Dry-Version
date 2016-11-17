@@ -1,18 +1,21 @@
+#dynamic 0x800000
 '---------------
-#org 0x16D65A
-trainerbattle 0x0 0x124 0x0 0x8198629 0x81986B4
-msgbox 0x81986C9 MSG_NORMAL '"So, you mix brawn with brains?\nGo..."
+#org 0x16D671
+trainerbattle 0x0 0x125 0x0 @msg_before @msg_onLoseFight
+msgbox 0x8198825 MSG_NORMAL '"I like poison and sleep techniques..."
 end
 
 
 '---------
 ' Strings
 '---------
-#org 0x198629
+#org @msg_before '0x1987E8
 = Did you POO today?
+'original = Let's see you beat my special\ntechniques!
 
-#org 0x1986B4
+#org @msg_onLoseFight '0x198812
 = Fair enough.
+'original = You had me fooled!
 
-#org 0x1986C9
-= So, you mix brawn with brains?\nGood strategy!\pThat's remarkable for a child\nTRAINER.
+'---- #org 0x198825
+'---- = I like poison and sleep techniques,\nas they linger after battle!

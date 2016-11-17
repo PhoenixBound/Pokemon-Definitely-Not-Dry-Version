@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16D643
-trainerbattle 0x0 0x121 0x0 0x81989A1 0x81989EA
+trainerbattle 0x0 0x121 0x0 @msg_before @msg_onLoseFight
 msgbox 0x8198A10 MSG_NORMAL '"Where there is light, there is\nsh..."
 end
 
@@ -8,11 +9,13 @@ end
 '---------
 ' Strings
 '---------
-#org 0x1989A1
-= Spread them cheeks, here comes the\nDangle!!!
+#org @msg_before '0x1989A1
+= Spread them cheeks. Here comes the\nDANGLE!
+'original = Master KOGA comes from a long line\nof ninjas.\pWhat did you descend from?
 
-#org 0x1989EA
+#org @msg_onLoseFight '0x1989EA
 = Looks like it's my cheeks that got\nspread!
+'original = You're more skilled than I'd\nthought!
 
-#org 0x198A10
-= Where there is light, there is\nshadow!\pLight and shadow!\nWhich do you choose?
+'---- #org 0x198A10
+'---- = Where there is light, there is\nshadow!\pLight and shadow!\nWhich do you choose?
