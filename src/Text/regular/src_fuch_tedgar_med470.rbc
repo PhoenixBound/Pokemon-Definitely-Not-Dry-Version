@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16D608
-trainerbattle 0x0 0x127 0x0 0x819891F 0x819897F
+trainerbattle 0x0 0x127 0x0 @msg_before @msg_onLoseFight
 msgbox 0x8198985 MSG_NORMAL '"I still have much to learn."
 end
 
@@ -8,11 +9,13 @@ end
 '---------
 ' Strings
 '---------
-#org 0x19891F
+#org @msg_before '0x19891F
 = Sun and Moon HYPU!
+'original = I also study the way of the ninja\nwith Master KOGA!\pNinja have a long history of using\nanimals!
 
-#org 0x19897F
+#org @msg_onLoseFight '0x19897F
 = Sun over Moon!
+'original = Awoo!
 
-#org 0x198985
-= I still have much to learn.
+'---- #org 0x198985
+'---- = I still have much to learn.

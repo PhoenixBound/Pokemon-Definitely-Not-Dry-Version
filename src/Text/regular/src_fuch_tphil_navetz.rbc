@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16D5F1
-trainerbattle 0x0 0x126 0x0 0x8198866 0x81988B6
+trainerbattle 0x0 0x126 0x0 @msg_before @msg_onLoseFight
 msgbox 0x81988CB MSG_NORMAL '"You impressed me!\nHere's a hint!\..."
 end
 
@@ -8,11 +9,13 @@ end
 '---------
 ' Strings
 '---------
-#org 0x198866
-= I am BHOS! Me Smush. Me Crush.  ME\nAM BHOS!
+#org @msg_before '0x198866
+= I am BHOS! Me Smush. Me Crush. ME\nAM BHOS!
+'original = Stop right there!\pThe famed invisible walls of\nFUCHSIA GYM have you frustrated?
 
-#org 0x1988B6
+#org @msg_onLoseFight '0x1988B6
 = You smush BHOS? HOW?
+'original = Whoa!\nYou've got it!
 
-#org 0x1988CB
-= You impressed me!\nHere's a hint!\pLook very closely for gaps in the\ninvisible walls!
+'---- #org 0x1988CB
+'---- = You impressed me!\nHere's a hint!\pLook very closely for gaps in the\ninvisible walls!
