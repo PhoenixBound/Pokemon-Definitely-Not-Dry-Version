@@ -1,10 +1,11 @@
+#dynamic 0x800000
 '---------------
 #org 0x16BA35
-trainerbattle 0x2 0x1A7 0x0 0x8194E57 0x8194EA5 0x816BA5D
+trainerbattle 0x2 0x1A7 0x0 @msg_before @msg_onLoseFight 0x816BA5D
 setvar 0x8004 0x4
 setvar 0x8005 0x3
 special 0x173
-msgbox 0x8194EBD MSG_NORMAL '"It's not easy opening that door.\p..."
+msgbox @msg_after MSG_NORMAL '"It's not easy opening that door.\p..."
 end
 
 '---------------
@@ -19,11 +20,14 @@ end
 '---------
 ' Strings
 '---------
-#org 0x194E57
-= Lets engage in a nice battle, my\nlittle friends are pretty strong.
+#org @msg_before '0x194E57
+= Let's engage in a nice battle, my\nlittle friends are pretty strong.
+'original = When I was in the Army, LT. SURGE\nwas my strict CO.\pHe was a hard taskmaster.
 
-#org 0x194EA5
-= You have a nice potential my\nfriend
+#org @msg_onLoseFight '0x194EA5
+= You have some nice potential,\nmy friend.
+'original = Stop!\nYou're very good!
 
-#org 0x194EBD
-= You have fought well,hurry and\nheal your pokemon now
+#org @msg_after '0x194EBD
+= You have fought well. Hurry and\nheal your POKÈMON now!\p[.]Wait, why would you need to heal?\nMy little friends are the\lunconscious ones!
+'original = It's not easy opening that door.\pLT. SURGE was always famous for\nhis cautious nature in the Army.

@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x169FA8
-trainerbattle 0x0 0x142 0x0 0x818F7AD 0x818F7D6
+trainerbattle 0x0 0x142 0x0 @msg_before 0x818F7D6
 msgbox 0x818F7DD MSG_NORMAL '"I'm still not worthy!"
 end
 
@@ -8,11 +9,12 @@ end
 '---------
 ' Strings
 '---------
-#org 0x18F7AD
-= It's time for you to lose
+#org @msg_before '0x18F7AD
+= It's time for you to lose.
+'original = Rrrroar!\nI'm working myself into a rage!
 
-#org 0x18F7D6
-= Wargh!
+'---- #org 0x18F7D6
+'---- = Wargh!
 
-#org 0x18F7DD
-= I'm still not worthy!
+'---- #org 0x18F7DD
+'---- = I'm still not worthy!

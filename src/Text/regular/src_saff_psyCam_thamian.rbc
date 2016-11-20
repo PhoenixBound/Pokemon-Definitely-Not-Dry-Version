@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16EEC3
-trainerbattle 0x0 0x11A 0x0 0x819BB49 0x819BBA1
+trainerbattle 0x0 0x11A 0x0 @msg_before @msg_onLoseFight
 msgbox 0x819BBB3 MSG_NORMAL '"There used to be two POKÈMON GYMS\..."
 end
 
@@ -8,11 +9,13 @@ end
 '---------
 ' Strings
 '---------
-#org 0x19BB49
+#org @msg_before '0x19BB49
 = I've seen the future, you've\nalready lost!
+'original = SABRINA is young, but she's also\nour highly skilled LEADER.\pYou won't reach her easily!
 
-#org 0x19BBA1
+#org @msg_onLoseFight '0x19BBA1
 = Me? Wrong? HoOoOwW!?
+'original = Ow!\nDown and out!
 
-#org 0x19BBB3
-= There used to be two POKÈMON GYMS\nin SAFFRON.\pThe FIGHTING DOJO next door lost\nits GYM status, though.\pWe simply creamed them when we\ndecided to have just one GYM.
+'---- #org 0x19BBB3
+'---- = There used to be two POKÈMON GYMS\nin SAFFRON.\pThe FIGHTING DOJO next door lost\nits GYM status, though.\pWe simply creamed them when we\ndecided to have just one GYM.

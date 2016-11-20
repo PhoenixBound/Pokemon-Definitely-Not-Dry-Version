@@ -1,18 +1,22 @@
+#dynamic 0x800000
 '---------------
 #org 0x169F7A
-trainerbattle 0x0 0x128 0x0 0x818F7F3 0x818F824
-msgbox 0x818F840 MSG_NORMAL '"Do you know the identity of our\nG..."
+trainerbattle 0x0 0x128 0x0 @msg_before @msg_onLoseFight
+msgbox @msg_after MSG_NORMAL '"Do you know the identity of our\nG..."
 end
 
 
 '---------
 ' Strings
 '---------
-#org 0x18F7F3
-= Is slowpoke a troll song?
+#org @msg_before '0x18F7F3
+= Is SLOWPOKE a troll song?
+'original = POKÈMON and I, we make wonderful\nmusic together!
 
-#org 0x18F824
-= You are in perfect harmony!
+#org @msg_onLoseFight '0x18F824
+= [grey_frt]JACKAPPLE has been timed out for\n60 seconds.
+'original = You are in perfect harmony!
 
-#org 0x18F840
-= Do you know the identity of our\nGYM LEADER?
+#org @msg_after '0x18F840
+= [.]That[.]that actually[.]?
+'original = Do you know the identity of our\nGYM LEADER?

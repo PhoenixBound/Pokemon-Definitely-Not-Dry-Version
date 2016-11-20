@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16EE9F
-trainerbattle 0x0 0x119 0x0 0x819BA45 0x819BA9E
+trainerbattle 0x0 0x119 0x0 @msg_before @msg_onLoseFight
 setvar 0x8004 0x7
 setvar 0x8005 0x5
 special 0x173
@@ -11,11 +12,13 @@ end
 '---------
 ' Strings
 '---------
-#org 0x19BA45
+#org @msg_before '0x19BA45
 = How you like yo eggs?
+'original = You understand, don't you?\pThat power alone isn't enough to\nwin in the world of POKÈMON?
 
-#org 0x19BA9E
+#org @msg_onLoseFight '0x19BA9E
 = Sunny side up fool!
+'original = I don't believe this!
 
-#org 0x19BAB4
-= SABRINA just wiped out the KARATE\nMASTER next door.
+'---- #org 0x19BAB4
+'---- = SABRINA just wiped out the KARATE\nMASTER next door.

@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x169FD6
-trainerbattle 0x0 0x144 0x0 0x818F92C 0x818F95A
+trainerbattle 0x0 0x144 0x0 @msg_before @msg_onLoseFight
 msgbox 0x818F960 MSG_NORMAL '"The POKÈMON LEAGUE?\nYou? Don't ge..."
 end
 
@@ -8,11 +9,13 @@ end
 '---------
 ' Strings
 '---------
-#org 0x18F92C
+#org @msg_before '0x18F92C
 = I think there is too little water\nin this version.
+'original = I'm the KARATE KING!\nYour fate rests with me!
 
-#org 0x18F95A
+#org @msg_onLoseFight '0x18F95A
 = Now I'M soaked!
+'original = Ayah!
 
-#org 0x18F960
-= The POKÈMON LEAGUE?\nYou? Don't get cocky!
+'---- #org 0x18F960
+'---- = The POKÈMON LEAGUE?\nYou? Don't get cocky!

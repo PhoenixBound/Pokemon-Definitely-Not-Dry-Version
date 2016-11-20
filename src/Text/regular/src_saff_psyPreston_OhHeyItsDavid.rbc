@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16EEDA
-trainerbattle 0x0 0x11B 0x0 0x819BC57 0x819BCBC
+trainerbattle 0x0 0x11B 0x0 @msg_before @msg_onLoseFight
 msgbox 0x819BCC4 MSG_NORMAL '"That's right! I used telepathy to\..."
 end
 
@@ -8,11 +9,13 @@ end
 '---------
 ' Strings
 '---------
-#org 0x19BC57
-= The names David! I foresee a loss\ncoming to you soon.
+#org @msg_before '0x19BC57
+= The name's David! I foresee a loss\ncoming to you soon.
+'original = SAFFRON POKÈMON GYM is famous for\ntraining psychics.\pYou want to see SABRINA, don't\nyou? I can tell!
 
-#org 0x19BCBC
-= HUH!? My predication was wrong?!
+#org @msg_onLoseFight '0x19BCBC
+= HUH?! My prediction was wrong?!
+'original = Arrrgh!
 
-#org 0x19BCC4
-= That's right! I used telepathy to\nread your mind!
+'---- #org 0x19BCC4
+'---- = That's right! I used telepathy to\nread your mind!

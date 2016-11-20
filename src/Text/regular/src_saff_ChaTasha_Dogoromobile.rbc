@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16EF1F
-trainerbattle 0x0 0x1D0 0x0 0x819BAE8 0x819BB0D
+trainerbattle 0x0 0x1D0 0x0 @msg_before 0x819BB0D
 msgbox 0x819BB1F MSG_NORMAL '"I knew that this was going to take..."
 end
 
@@ -8,11 +9,12 @@ end
 '---------
 ' Strings
 '---------
-#org 0x19BAE8
+#org @msg_before '0x19BAE8
 = JIMMY RUSSEL EATS MEGA BEPIS
+'original = You and I, our POKÈMON shall\nbattle!
 
-#org 0x19BB0D
-= I lost after all!
+'---- #org 0x19BB0D
+'---- = I lost after all!
 
-#org 0x19BB1F
-= I knew that this was going to take\nplace.
+'---- #org 0x19BB1F
+'---- = I knew that this was going to take\nplace.

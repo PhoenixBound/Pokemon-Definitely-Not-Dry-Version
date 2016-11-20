@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x169F91
-trainerbattle 0x0 0x129 0x0 0x818F98A 0x818F9BB
+trainerbattle 0x0 0x129 0x0 @msg_before @msg_onLoseFight
 msgbox 0x818F9CC MSG_NORMAL '"Wait!\nI was just careless!"
 end
 
@@ -8,11 +9,13 @@ end
 '---------
 ' Strings
 '---------
-#org 0x18F98A
-= Damn it feels good to be an\nxWater sub!
+#org @msg_before '0x18F98A
+= Damn, it feels good to be an\nXWATER sub!
+'original = Your POKÈMON will cower at the\ncrack of my whip!
 
-#org 0x18F9BB
-= Cause being a wet sub's just so\nmoist
+#org @msg_onLoseFight '0x18F9BB
+= 'Cause being a wet sub's just so\nmoist.
+'original = Yowch!\nWhiplash!
 
-#org 0x18F9CC
-= Wait!\nI was just careless!
+'---- #org 0x18F9CC
+'---- = Wait!\nI was just careless!

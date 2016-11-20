@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16A01B
-trainerbattle 0x0 0x191 0x0 0x818F8CB 0x818F8EE
+trainerbattle 0x0 0x191 0x0 @msg_before @msg_onLoseFight
 msgbox 0x818F8FE MSG_NORMAL '"The LEADER will scold me for\nlosi..."
 end
 
@@ -8,11 +9,13 @@ end
 '---------
 ' Strings
 '---------
-#org 0x18F8CB
-= Im about to take you to\nFlavortown, OHHHH YEAAAAH!
+#org @msg_before '0x18F8CB
+= I'm about to take you to\nFlavortown. OHHHH YEAAAAH!
+'original = The truly talented win with style.
 
-#org 0x18F8EE
-= That loss left me SALTY
+#org @msg_onLoseFight '0x18F8EE
+= That loss left me \c\h15salty\c\h16[.]
+'original = I lost my grip!
 
-#org 0x18F8FE
-= The LEADER will scold me for\nlosing this way[.]
+'---- #org 0x18F8FE
+'---- = The LEADER will scold me for\nlosing this way[.]

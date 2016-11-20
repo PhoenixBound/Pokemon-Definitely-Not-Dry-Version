@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x16A004
-trainerbattle 0x0 0x190 0x0 0x818F73B 0x818F769
+trainerbattle 0x0 0x190 0x0 @msg_before 0x818F769
 msgbox 0x818F77B MSG_NORMAL '"You'll need power to keep up with\..."
 end
 
@@ -8,11 +9,12 @@ end
 '---------
 ' Strings
 '---------
-#org 0x18F73B
-= Gei kemuri o goho-ka!
+#org @msg_before '0x18F73B
+= \c\h15Gei kemuri wo\ngouhou-ka!\c\h16\p[.]That means LEGALIZE GAY SMOKE for\nyou losers out there.
+'original = Heh!\nYou must be running out of steam\lby now!
 
-#org 0x18F769
-= I ran out of gas!
+'---- #org 0x18F769
+'---- = I ran out of gas!
 
-#org 0x18F77B
-= You'll need power to keep up with\nour GYM LEADER.
+'---- #org 0x18F77B
+'---- = You'll need power to keep up with\nour GYM LEADER.

@@ -1,6 +1,7 @@
+#dynamic 0x800000
 '---------------
 #org 0x169FED
-trainerbattle 0x0 0x188 0x0 0x818F9E7 0x818FA2D
+trainerbattle 0x0 0x188 0x0 @msg_before 0x818FA2D
 msgbox 0x818FA3B MSG_NORMAL '"You can go on to the POKÈMON\nLEAG..."
 end
 
@@ -8,11 +9,12 @@ end
 '---------
 ' Strings
 '---------
-#org 0x18F9E7
+#org @msg_before '0x18F9E7
 = I'll ignite the flames of\nbattle... oh wait I'm a dark type\ltrainer
+'original = VIRIDIAN GYM was closed for a\nlong time.\pBut now, our LEADER is back!
 
-#org 0x18FA2D
-= I was beaten?
+'---- #org 0x18FA2D
+'---- = I was beaten?
 
-#org 0x18FA3B
-= You can go on to the POKÈMON\nLEAGUE only by defeating our GYM\lLEADER!
+'---- #org 0x18FA3B
+'---- = You can go on to the POKÈMON\nLEAGUE only by defeating our GYM\lLEADER!
