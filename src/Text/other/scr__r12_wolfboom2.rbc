@@ -22,8 +22,8 @@ end
 = WOLFBOOM: Whatever you do[.]don't\nwin. She will hunt you down.\pPURRINA: I will do it, ya know.
 'original = JES: If I win, I'm going to\npropose to GIA.
 
-#org @msg_onLoseFight '0x1857F1
-= WOLFBOOM: \c\h15Run, dude!!\n\c\h16PURRINA: GET BACK HERE!  'Check this for overflow, it uses a wider font
+#org @msg_onLoseFight '0x1857F1 'Check this for overflow, it uses a wider font
+= WOLFBOOM: \c\h15Run, dude!!\n\c\h16PURRINA: GET BACK HERE!
 'original = JES: Oh, please, why couldn't you\nlet us win?
 
 #org @msg_insufficient '0x185842
