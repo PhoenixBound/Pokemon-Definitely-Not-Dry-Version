@@ -147,7 +147,7 @@ end
 = You dare challange me? I'll have\nyou know I have quite the\lreputation for BEAR FIGHTING!\c\h0B[Ke]¿
 'original = KOGA: Fwahahaha!\pA mere child like you dares to\nchallenge me?\pThe very idea makes me shiver\nwith mirth!\pVery well, I shall show you true\nterror as a ninja master.\pPoison brings steady doom.\nSleep renders foes helpless.\pDespair to the creeping horror of\nPOISON-type POKÈMON!\c\h0B[Ke]¿
 
-#org @msg_onLoseFight 0x198444
+#org @msg_onLoseFight '0x198444
 = You were a greater adversary than\nany bear could ever be.
 'original = Humph!\nYou have proven your worth!\pHere!\nTake the SOULBADGE!
 

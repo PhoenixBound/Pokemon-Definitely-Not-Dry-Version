@@ -13,7 +13,7 @@ if 0x1 goto @noGive
 checkitemroom ITEM_MAXPOTION 0x1
 compare LASTRESULT 0x0
 if 0x1 goto @punishment
-msgbox @okay 0x2
+msgbox @msg_give 0x2
 loadpointer 0x0 @msg_giveItem
 additem ITEM_MAXPOTION 0x1
 giveitem2 ITEM_MAXPOTION 0x1 0x10F
@@ -37,6 +37,9 @@ end
 
 #org @msg_noGive
 = Oh[.]I see.\pIt's a pretty overpowered item, so\nI understand.
+
+#org @msg_give
+= Okay! Let me get it out of my bag.\p[.]Here!
 
 #org @msg_giveItem
 = [player] got a MAX\nPOTION. Cheater.

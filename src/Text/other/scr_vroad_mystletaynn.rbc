@@ -5,11 +5,6 @@ trainerbattle 0x0 0x122 0x0 @msg_before @msg_onLoseFight
 msgbox @msg_default MSG_NORMAL '"Many TRAINERS give up their\nchall..."
 end
 
-'---------------
-#org @oneMember
-trainerbattle 0x0 0x122 0x0 @msg_before @msg_onLoseFight2
-msgbox @msg_default MSG_NORMAL
-end
 
 '---------
 ' Strings
